@@ -1,0 +1,1 @@
+<?php include('modulos/encabezados/principal.php');
