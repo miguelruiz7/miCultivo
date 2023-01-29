@@ -12,4 +12,9 @@ if ($pos_web == "bitacora")
 {
     $base = 'Bitácora';
 }
+
+if ($pos_web == "calculadora") 
+{
+    $base = 'Calculadora';
+}
 ?>
