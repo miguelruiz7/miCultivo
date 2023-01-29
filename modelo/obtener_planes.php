@@ -11,7 +11,7 @@ $cultivo_id = $_POST['plan_id'];
         $planes[] = $row;
     }
     ?>
-        <select name="planes" class="form-control rounded-3" id="floatingInput">
+        <select name="txtplan" class="form-control rounded-3" id="floatingInput">
             <option value="0" selected="">Seleccione:</option> 
     <?php
     // Mostramos el select de planes.

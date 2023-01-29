@@ -15,7 +15,7 @@ if(isset($_POST['agregar'])){
     $area=$_POST['txtarea'];
     $rendimientoi=$_POST['txtreni'];
 
-    if($nombre == '' || $tipo == '' || $ubicacion == '' || $inicio == '' || $final == '' || $descripcion == '' || $rendimientoi == ''){
+    if($nombre == '' && $tipo == '' && $ubicacion == '' && $inicio == '' && $final == '' && $descripcion == '' && $area == '' && $rendimientoi == ''){
         $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
         Rellene todos los datos correctamente.
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
@@ -90,11 +90,12 @@ if(isset($_POST['eliminar'])){
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
       </div>";
     }else{
-    $sqldel="DELETE FROM c_planificar WHERE cultivo_id='$id'";
-    if (mysqli_query($conexion,$sqldel))
-    {
-      $sql="DELETE FROM c_datos WHERE id='$id'";
-      if (mysqli_query($conexion,$sql))
+
+
+    $sqldel="DELETE FROM c_bitacora WHERE cultivo_id='$id';";
+    $sqldel.="DELETE FROM c_planificar WHERE cultivo_id='$id';";
+    $sqldel.="DELETE FROM c_datos WHERE id='$id'";
+      if (mysqli_multi_query($conexion,$sqldel))
       {
         $errores .="<div class='alert alert-success alert-dismissible fade show' role='alert'>
         Se eliminó satisfactoriamente.
@@ -108,7 +109,9 @@ if(isset($_POST['eliminar'])){
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
       </div>";
     }
-  }
+  
+
+
 }
   }
 }
@@ -182,6 +185,40 @@ if(isset($_POST['completado'])){
 }
 }
 }
+
+//INSERTAR BITACORA
+if(isset($_POST['agregarbit'])){
+  if($_SERVER['REQUEST_METHOD']=='POST'){ 
+  $cultivo=$_POST['txtcultivo'];
+  $plan=$_POST['txtplan'];
+  $lugar=$_POST['txtlugar'];
+  $fecha=$_POST['txtfecha'];
+  $descripcion=$_POST['txtdescripcion'];
+
+  if($cultivo == '' || $plan == '' || $lugar == '' || $fecha == '' || $descripcion == ''){
+      $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+      Rellene todos los datos correctamente.
+      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>";
+  }else{
+  $sql="INSERT INTO c_bitacora (id_bitacora,cultivo_id,plan_id,fecha,lugar,desarollo) VALUES (NULL,'$cultivo','$plan','$fecha','$lugar','$descripcion')";
+  if (mysqli_query($conexion,$sql))
+  {
+     $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
+      Se agrego una bitacora a la base de datos.
+      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>";
+  }else{
+      //Añadir una excepción
+      $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+      Falló.
+      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>";
+  }
+}
+}
+}
+
 
 require('vistas/index.php');
 ?>

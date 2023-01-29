@@ -7,6 +7,7 @@
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css"href="assets/main.css" rel="stylesheet">
     <link rel="shortcut icon" href="assets/logo.png" type="image/png">
+    <script src="assets/jquery/jquery.min.js"></script>
   </head>
   <body>
 <!-- Encabezado -->
@@ -77,7 +78,23 @@ if(!empty($errores)): ?>
       </div>
   </div>
 </div>
+<?php include('vistas/modulos/modales_formularios/agregar_bitacora.php'); ?>
 </main>
   <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $("#cultivo").change(function(){
+        var plan_id = $(this).val();
+        $.ajax({
+            url: "modelo/obtener_planes.php",
+            type: "POST",
+            data: {plan_id: plan_id},
+            success: function(data){
+                $("#planes").html(data);
+            }
+        });
+    });
+});
+  </script>
   </body>
 </html>

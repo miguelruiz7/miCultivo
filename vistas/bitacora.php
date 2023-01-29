@@ -25,7 +25,10 @@ if(!empty($errores)): ?>
 <?php endif; ?>
     <div class="row py-lg-4">
       <div class="col-lg-12">
-        <h1 class="fw-light"> Bitacora</h1>
+        <?php 
+          include('modelo/obtener_nombre_cultivo.php');
+        ?>
+        <h1 class="fw-light"> Mostrando bitácora: <?php echo $nombre_cultivo ?> </h1>
     </div>
 </section>
 <main>
@@ -34,17 +37,20 @@ if(!empty($errores)): ?>
     <div class="album py-1">
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <?php /*
+          <?php 
+            if(isset($_GET['ver'])){
             include('conexion.php');
-            $result = mysqli_query($conexion, "SELECT id, nombre, tipo_id, nombre_c, ubicacion, inicio, final, descripcion, area, rendimiento FROM c_datos, c_tipo_cultivo WHERE c_datos.tipo_id=c_tipo_cultivo.id_c");
+            $result = mysqli_query($conexion, "SELECT id_bitacora, plan_id, fecha,lugar,desarollo,c_bitacora.cultivo_id, c_datos.nombre, c_planificar.nombre_plan FROM c_bitacora, c_datos, c_planificar WHERE c_bitacora.cultivo_id=c_datos.id AND c_bitacora.plan_id=c_planificar.id_plan AND c_bitacora.cultivo_id = '$cultivo_id'");
             $rows = mysqli_num_rows($result);
           if($rows > 0){
             while ($datos = mysqli_fetch_array($result)) {
-            include('modulos/card_cultivo.php'); 
+            include('modulos/card_bitacora.php'); 
             }
           }else{
-            include('modulos/card_cultivo_vacio.php');  
-            } */
+            include('modulos/card_bitacora_vacio.php');  
+            }}else{
+            echo "<script>alert('¿Qué estás estas haciendo?'); window.location.href = 'index';</script>";
+            }
             ?>
           </div>
         </div>

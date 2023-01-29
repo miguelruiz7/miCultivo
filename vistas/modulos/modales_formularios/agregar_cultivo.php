@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-floating mb-3">
                       <select name="txttipo" class="form-control rounded-3" id="floatingInput">
-                              <option value="0" selected="">Seleccione:</option> 
+                              <option value="" selected="">Seleccione:</option> 
                               <?php
                             include('conexion.php');
                             $generales="SELECT * FROM c_tipo_cultivo";
