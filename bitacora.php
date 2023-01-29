@@ -1,6 +1,9 @@
 <?php
 $errores= '';
-include('conexion.php');
+include('controlador/conexion.php');
+
+//Incluimos dependencias
+include('modelo/bases.php');
 
 //ACTUALIZAR
 if(isset($_POST['actualizar'])){
@@ -127,6 +130,8 @@ if(isset($_POST['completado'])){
 }
 }
 }
-
+require('vistas/encabezado.php');
 require('vistas/bitacora.php');
+require('vistas/modulos/pies/pie.php');
+
 ?>

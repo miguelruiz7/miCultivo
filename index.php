@@ -1,7 +1,12 @@
 <?php
-$errores= '';
-include('conexion.php');
+//Se incluye la conexión
+include('controlador/conexion.php');
 
+//Incluimos dependencias
+include('modelo/bases.php');
+
+//Declaramos nuestros errores en vacío.
+$errores= '';
 
 //INSERTAR
 if(isset($_POST['agregar'])){
@@ -18,25 +23,32 @@ if(isset($_POST['agregar'])){
     if($nombre == '' && $tipo == '' && $ubicacion == '' && $inicio == '' && $final == '' && $descripcion == '' && $area == '' && $rendimientoi == ''){
         $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
         Rellene todos los datos correctamente.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+
       </div>";
-    }else{
-    
+    }
+
+    if($inicio>$final){
+      $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+      Introduce una fecha que no sea mayor a la final.
+    </div>";
+    }
+
+    if($errores == ''){
     $sql="INSERT INTO c_datos (nombre,tipo_id,ubicacion,inicio,final,descripcion,area,rendimiento) VALUES ('$nombre','$tipo','$ubicacion','$inicio','$final','$descripcion','$area','$rendimientoi')";
     if (mysqli_query($conexion,$sql))
     {
        $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
         Se agrego a la base de datos.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+
       </div>";
     }else{
         //Añadir una excepción
         $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
         Falló.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+
       </div>";
     }
-}
+  }
   }
 }
 
@@ -57,7 +69,7 @@ if(isset($_POST['actualizar'])){
     if($id == '' || $nombre == '' || $tipo == '' || $ubicacion == '' || $inicio == '' || $final == '' || $descripcion == '' || $rendimientoi == ''){
         $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
         Ingrese todos los datos correctamente.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+
       </div>";
     }else{
     
@@ -66,14 +78,14 @@ if(isset($_POST['actualizar'])){
     {
        $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
         Se realizó la modificación correctamente.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+
       </div>"; 
 
     }else{
         //Añadir una excepción
         $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
         Falló.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+
       </div>";
     }
 }
@@ -87,7 +99,7 @@ if(isset($_POST['eliminar'])){
     if($id == ''){
         $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
         Rellene los datos correctamente.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+
       </div>";
     }else{
 
@@ -99,14 +111,14 @@ if(isset($_POST['eliminar'])){
       {
         $errores .="<div class='alert alert-success alert-dismissible fade show' role='alert'>
         Se eliminó satisfactoriamente.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+
       </div>"; 
 
     }else{
         //Añadir una excepción
         $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
         Falló.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+
       </div>";
     }
   
@@ -133,7 +145,6 @@ if(isset($_POST['agregarplan'])){
   if($nombre == '' || $inicio == '' || $final == '' || $inicio == '' || $final == '' || $descripcion == '' || $humanos == '' || $presupuesto == '' || $materiales == ''){
       $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
       Rellene todos los datos correctamente.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
     </div>";
   }else{
   
@@ -142,13 +153,11 @@ if(isset($_POST['agregarplan'])){
   {
      $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
       Se agrego a la base de datos.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
     </div>";
   }else{
       //Añadir una excepción
       $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
       Falló.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
     </div>";
   }
 }
@@ -164,7 +173,6 @@ if(isset($_POST['completado'])){
   if($id == ''){
       $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
       Rellene los datos correctamente.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
     </div>";
   }else{
     $sql="UPDATE c_planificar SET completado=1 WHERE id_plan='$id'";
@@ -172,14 +180,12 @@ if(isset($_POST['completado'])){
     {
       $errores .="<div class='alert alert-success alert-dismissible fade show' role='alert'>
       Se marca cómo acompletada la tarea.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
     </div>"; 
 
   }else{
       //Añadir una excepción
       $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
       Falló.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
     </div>";
   }
 }
@@ -188,6 +194,7 @@ if(isset($_POST['completado'])){
 
 //INSERTAR BITACORA
 if(isset($_POST['agregarbit'])){
+  error_reporting(0);
   if($_SERVER['REQUEST_METHOD']=='POST'){ 
   $cultivo=$_POST['txtcultivo'];
   $plan=$_POST['txtplan'];
@@ -198,7 +205,6 @@ if(isset($_POST['agregarbit'])){
   if($cultivo == '' || $plan == '' || $lugar == '' || $fecha == '' || $descripcion == ''){
       $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
       Rellene todos los datos correctamente.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
     </div>";
   }else{
   $sql="INSERT INTO c_bitacora (id_bitacora,cultivo_id,plan_id,fecha,lugar,desarollo) VALUES (NULL,'$cultivo','$plan','$fecha','$lugar','$descripcion')";
@@ -206,19 +212,18 @@ if(isset($_POST['agregarbit'])){
   {
      $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
       Se agrego una bitacora a la base de datos.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
     </div>";
   }else{
       //Añadir una excepción
       $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
       Falló.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
     </div>";
   }
 }
 }
 }
 
-
+require('vistas/encabezado.php');
 require('vistas/index.php');
+require('vistas/modulos/pies/pie.php');
 ?>

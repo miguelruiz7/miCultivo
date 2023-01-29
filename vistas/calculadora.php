@@ -1,18 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mi cultivo | Inicio</title>
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" href="assets/main.css" rel="stylesheet">
-  </head>
-  <body>
-
-<!-- Encabezado -->
-<?php include('vistas/encabezado.php') ?>
-  
- <section class="py-5 container">
+<section class="py-5 container">
     <div class="row py-lg-5">
       <div class="col-lg-12">
         <h1 class="fw-light"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calculator-fill" viewBox="0 0 16 16">
@@ -55,17 +41,6 @@
                 </form>
                 </div></center>
 </div>
-<div class="container">
-<!-- Modales -->
 
-<?php include('vistas/modales.php'); ?>
-
-</div>
 <!-- Finalizan los modales -->
-</main>
-<div class="container">
-  <?php include('vistas/pie.php'); ?>
-</div>
-    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
-</html>
+

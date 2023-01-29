@@ -1,17 +1,3 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mi cultivo | Bitácora</title>
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css"href="assets/main.css" rel="stylesheet">
-    <link rel="shortcut icon" href="assets/logo.png" type="image/png">
-    <script src="assets/jquery/jquery.min.js"></script>
-  </head>
-  <body>
-<!-- Encabezado -->
-<?php include('vistas/encabezado.php') ?>
 <div class="container">
   <?php
   include('vistas/modulos/modales_formularios/agregar_bitacora.php');
@@ -28,7 +14,10 @@ if(!empty($errores)): ?>
         <?php 
           include('modelo/obtener_nombre_cultivo.php');
         ?>
-        <h1 class="fw-light"> Mostrando bitácora: <?php echo $nombre_cultivo ?> </h1>
+        <h1 class="fw-light"> Mostrando bitácora: <?php echo $nombre_cultivo ?></h1> <a href="<?php echo $_SERVER['REQUEST_URI']; ?>"><button class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+</svg></button></a>
     </div>
 </section>
 <main>
@@ -39,7 +28,6 @@ if(!empty($errores)): ?>
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <?php 
             if(isset($_GET['ver'])){
-            include('conexion.php');
             $result = mysqli_query($conexion, "SELECT id_bitacora, plan_id, fecha,lugar,desarollo,c_bitacora.cultivo_id, c_datos.nombre, c_planificar.nombre_plan FROM c_bitacora, c_datos, c_planificar WHERE c_bitacora.cultivo_id=c_datos.id AND c_bitacora.plan_id=c_planificar.id_plan AND c_bitacora.cultivo_id = '$cultivo_id'");
             $rows = mysqli_num_rows($result);
           if($rows > 0){
@@ -56,22 +44,3 @@ if(!empty($errores)): ?>
         </div>
     </div>
 </div>
-</main>
-  <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function(){
-    $("#cultivo").change(function(){
-        var plan_id = $(this).val();
-        $.ajax({
-            url: "modelo/obtener_planes.php",
-            type: "POST",
-            data: {plan_id: plan_id},
-            success: function(data){
-                $("#planes").html(data);
-            }
-        });
-    });
-});
-  </script>
-  </body>
-</html>
