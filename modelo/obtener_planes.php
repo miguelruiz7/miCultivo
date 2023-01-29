@@ -1,5 +1,5 @@
 <?php
-    include('../conexion.php');
+    include('../controlador/conexion.php');
 $cultivo_id = $_POST['plan_id'];
     $planes = array();
 
