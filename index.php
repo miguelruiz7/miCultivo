@@ -149,7 +149,7 @@ if(isset($_POST['agregarplan'])){
     </div>";
   }else{
   
-  $sql="INSERT INTO plan (id_plan,nombre_plan,descripcion,recurso_hum,recurso_econ,recurso_mat,inicio_plan,final_plan,completado,cultivo_id) VALUES (NULL,'$nombre','$descripcion','$humanos','$presupuesto','$materiales','$inicio','$final',0,'$id_cultivo')";
+  $sql="INSERT INTO plan (id_plan,nombre_plan,descripcion_p,recurso_hum,recurso_econ,recurso_mat,inicio_plan,final_plan,completado,cultivo_id) VALUES (NULL,'$nombre','$descripcion','$humanos','$presupuesto','$materiales','$inicio','$final',0,'$id_cultivo')";
   if (mysqli_query($conexion,$sql))
   {
      $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
