@@ -24,7 +24,7 @@ if(!empty($errores)): ?>
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <?php
-            $result = mysqli_query($conexion, "SELECT id, nombre, tipo_id, nombre_c, ubicacion, inicio, final, descripcion, area, rendimiento FROM c_datos, c_tipo_cultivo WHERE c_datos.tipo_id=c_tipo_cultivo.id_c");
+            $result = mysqli_query($conexion, "SELECT id, nombre, tipo_id, nombre_c, ubicacion, inicio, final, descripcion, area, rendimiento FROM cultivo, tipo WHERE cultivo.tipo_id=tipo.id_c");
             $rows = mysqli_num_rows($result);
           if($rows > 0){
             while ($datos = mysqli_fetch_array($result)) {
@@ -51,7 +51,7 @@ if(!empty($errores)): ?>
       <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <?php
-          $result = mysqli_query($conexion, "SELECT * FROM c_planificar,c_datos WHERE c_planificar.completado=0 AND c_planificar.cultivo_id=c_datos.id;");
+          $result = mysqli_query($conexion, "SELECT * FROM plan,cultivo WHERE plan.completado=0 AND plan.cultivo_id=cultivo.id;");
           $rows = mysqli_num_rows($result);
         if($rows > 0){
           while ($datos = mysqli_fetch_array($result)) {

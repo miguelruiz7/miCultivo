@@ -22,7 +22,7 @@
                               <option value="" selected="">Seleccione:</option> 
                               <?php
                             include('conexion.php');
-                            $generales="SELECT * FROM c_tipo_cultivo";
+                            $generales="SELECT * FROM tipo";
                             $resultado= mysqli_query($conexion,$generales);
                                 while($valores= mysqli_fetch_array($resultado)){
                                     ?>

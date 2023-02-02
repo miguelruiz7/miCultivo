@@ -5,45 +5,6 @@ include('controlador/conexion.php');
 //Incluimos dependencias
 include('modelo/bases.php');
 
-//ACTUALIZAR
-if(isset($_POST['actualizar'])){
-    if($_SERVER['REQUEST_METHOD']=='POST'){ 
-    $id=$_POST['id'];
-    $nombre=$_POST['txtnombre'];
-    $tipo=$_POST['txttipo'];
-    $ubicacion=$_POST['txtubicacion'];
-    $inicio=$_POST['txtfi'];
-    $final=$_POST['txtff'];
-    $descripcion=$_POST['txtdescripcion'];
-    $area=$_POST['txtarea'];
-    $rendimientoi=$_POST['txtreni'];
-
-    if($id == '' || $nombre == '' || $tipo == '' || $ubicacion == '' || $inicio == '' || $final == '' || $descripcion == '' || $rendimientoi == ''){
-        $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-        Ingrese todos los datos correctamente.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-      </div>";
-    }else{
-    
-    $sql="UPDATE c_datos SET nombre='$nombre',tipo_id='$tipo',ubicacion='$ubicacion',inicio='$inicio',final='$final',descripcion='$descripcion',area='$area',rendimiento='$rendimientoi' WHERE id = '$id'";
-    if (mysqli_query($conexion,$sql))
-    {
-       $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
-        Se realizó la modificación correctamente.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-      </div>"; 
-
-    }else{
-        //Añadir una excepción
-        $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-        Falló.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-      </div>";
-    }
-}
-  }
-}
-
 //ELIMINAR
 if(isset($_POST['eliminar'])){
     if($_SERVER['REQUEST_METHOD']=='POST'){ 
@@ -52,8 +13,8 @@ if(isset($_POST['eliminar'])){
     if($id == ''){
       
     }else{
-    $sqldel="DELETE FROM c_bitacora WHERE id_bitacora='$id'";
-    if (mysqli_query($conexion,$sqldel))
+    $sqldel="DELETE FROM cultivo_bitacora WHERE bitacora_id='$id'";
+    if (mysqli_multi_query($conexion,$sqldel))
     {
         echo "<script>window.location.href='bitacora?id_cultivo=$cultivo_id&ver='</script>";
     }
@@ -61,75 +22,6 @@ if(isset($_POST['eliminar'])){
   }
 }
 
-
-
-//INSERTAR PLAN
-if(isset($_POST['agregarplan'])){
-  if($_SERVER['REQUEST_METHOD']=='POST'){
-  $id_cultivo = $_POST['idcultivo'];
-  $nombre=$_POST['txtnombre'];
-  $inicio=$_POST['txtini'];
-  $final=$_POST['txtfin'];
-  $descripcion=$_POST['txtdescripcion'];
-  $humanos=$_POST['txthum'];
-  $presupuesto=$_POST['txtpto'];
-  $materiales=$_POST['txtmat'];
-
-  if($nombre == '' || $inicio == '' || $final == '' || $inicio == '' || $final == '' || $descripcion == '' || $humanos == '' || $presupuesto == '' || $materiales == ''){
-      $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-      Rellene todos los datos correctamente.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    </div>";
-  }else{
-  
-  $sql="INSERT INTO c_planificar (id_plan,nombre_plan,descripcion,recurso_hum,recurso_econ,recurso_mat,inicio_plan,final_plan,completado,cultivo_id) VALUES (NULL,'$nombre','$descripcion','$humanos','$presupuesto','$materiales','$inicio','$final',0,'$id_cultivo')";
-  if (mysqli_query($conexion,$sql))
-  {
-     $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
-      Se agrego a la base de datos.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    </div>";
-  }else{
-      //Añadir una excepción
-      $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-      Falló.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    </div>";
-  }
-}
-}
-}
-
-
-
-//COMPLETAR PLAN
-if(isset($_POST['completado'])){
-  if($_SERVER['REQUEST_METHOD']=='POST'){ 
-  $id=$_POST['id_plan'];
-  if($id == ''){
-      $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-      Rellene los datos correctamente.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    </div>";
-  }else{
-    $sql="UPDATE c_planificar SET completado=1 WHERE id_plan='$id'";
-    if (mysqli_query($conexion,$sql))
-    {
-      $errores .="<div class='alert alert-success alert-dismissible fade show' role='alert'>
-      Se marca cómo acompletada la tarea.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    </div>"; 
-
-  }else{
-      //Añadir una excepción
-      $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-      Falló.
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    </div>";
-  }
-}
-}
-}
 require('vistas/encabezado.php');
 require('vistas/bitacora.php');
 require('vistas/modulos/pies/pie.php');

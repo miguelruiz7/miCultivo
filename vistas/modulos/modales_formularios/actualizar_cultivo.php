@@ -25,7 +25,7 @@
                               $id_tipoc = $datos['tipo_id'];
                               echo $id_tipoc;
                             include('conexion.php');
-                            $generales="SELECT * FROM c_tipo_cultivo WHERE id_c NOT IN ('$id_tipoc') ";
+                            $generales="SELECT * FROM tipo WHERE id_c NOT IN ('$id_tipoc') ";
                             $resultado= mysqli_query($conexion,$generales);
                                 while($valores= mysqli_fetch_array($resultado)){
                                     ?>

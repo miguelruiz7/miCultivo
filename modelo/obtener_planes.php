@@ -4,7 +4,7 @@ $cultivo_id = $_POST['plan_id'];
     $planes = array();
 
     // Consulta a la base de datos para obtener los planes de la marca seleccionada
-    $query = "SELECT * FROM c_planificar WHERE cultivo_id = $cultivo_id";
+    $query = "SELECT * FROM plan WHERE cultivo_id = $cultivo_id";
     $result = mysqli_query($conexion, $query);
 
     while($row = mysqli_fetch_assoc($result)) {
@@ -23,6 +23,11 @@ $cultivo_id = $_POST['plan_id'];
   ?>
  </select>
  <label for="floatingInput">Selecciona el plan:</label>
+ <div class="checkbox mb-4">
+      <label>
+        <input type="checkbox" name="completar"> Marcar cómo completado
+      </label>
+    </div>
    <?php
 ?>
                      

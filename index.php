@@ -34,7 +34,7 @@ if(isset($_POST['agregar'])){
     }
 
     if($errores == ''){
-    $sql="INSERT INTO c_datos (nombre,tipo_id,ubicacion,inicio,final,descripcion,area,rendimiento) VALUES ('$nombre','$tipo','$ubicacion','$inicio','$final','$descripcion','$area','$rendimientoi')";
+    $sql="INSERT INTO cultivo (nombre,tipo_id,ubicacion,inicio,final,descripcion,area,rendimiento) VALUES ('$nombre','$tipo','$ubicacion','$inicio','$final','$descripcion','$area','$rendimientoi')";
     if (mysqli_query($conexion,$sql))
     {
        $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
@@ -73,7 +73,7 @@ if(isset($_POST['actualizar'])){
       </div>";
     }else{
     
-    $sql="UPDATE c_datos SET nombre='$nombre',tipo_id='$tipo',ubicacion='$ubicacion',inicio='$inicio',final='$final',descripcion='$descripcion',area='$area',rendimiento='$rendimientoi' WHERE id = '$id'";
+    $sql="UPDATE cultivo SET nombre='$nombre',tipo_id='$tipo',ubicacion='$ubicacion',inicio='$inicio',final='$final',descripcion='$descripcion',area='$area',rendimiento='$rendimientoi' WHERE id = '$id'";
     if (mysqli_query($conexion,$sql))
     {
        $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
@@ -104,26 +104,26 @@ if(isset($_POST['eliminar'])){
     }else{
 
 
-    $sqldel="DELETE FROM c_bitacora WHERE cultivo_id='$id';";
-    $sqldel.="DELETE FROM c_planificar WHERE cultivo_id='$id';";
-    $sqldel.="DELETE FROM c_datos WHERE id='$id'";
-      if (mysqli_multi_query($conexion,$sqldel))
-      {
-        $errores .="<div class='alert alert-success alert-dismissible fade show' role='alert'>
-        Se eliminó satisfactoriamente.
+      $sql = "DELETE FROM cultivo_bitacora WHERE cultivo_id='$id';"; 
+      if(mysqli_query($conexion,$sql)){
+        $sqldel="DELETE FROM plan WHERE cultivo_id='$id';";
+        $sqldel.="DELETE FROM cultivo WHERE id='$id'";
+          if (mysqli_multi_query($conexion,$sqldel))
+          {
+            $errores .="<div class='alert alert-success alert-dismissible fade show' role='alert'>
+            Se eliminó satisfactoriamente.
+          </div>";
+          header('Location: index');
+    
+        }else{
+            //Añadir una excepción
+            $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+            Falló.
+          </div>";
+        }
+      }else{
 
-      </div>"; 
-
-    }else{
-        //Añadir una excepción
-        $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-        Falló.
-
-      </div>";
-    }
-  
-
-
+      }
 }
   }
 }
@@ -142,13 +142,14 @@ if(isset($_POST['agregarplan'])){
   $presupuesto=$_POST['txtpto'];
   $materiales=$_POST['txtmat'];
 
+
   if($nombre == '' || $inicio == '' || $final == '' || $inicio == '' || $final == '' || $descripcion == '' || $humanos == '' || $presupuesto == '' || $materiales == ''){
       $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
       Rellene todos los datos correctamente.
     </div>";
   }else{
   
-  $sql="INSERT INTO c_planificar (id_plan,nombre_plan,descripcion,recurso_hum,recurso_econ,recurso_mat,inicio_plan,final_plan,completado,cultivo_id) VALUES (NULL,'$nombre','$descripcion','$humanos','$presupuesto','$materiales','$inicio','$final',0,'$id_cultivo')";
+  $sql="INSERT INTO plan (id_plan,nombre_plan,descripcion,recurso_hum,recurso_econ,recurso_mat,inicio_plan,final_plan,completado,cultivo_id) VALUES (NULL,'$nombre','$descripcion','$humanos','$presupuesto','$materiales','$inicio','$final',0,'$id_cultivo')";
   if (mysqli_query($conexion,$sql))
   {
      $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
@@ -175,7 +176,7 @@ if(isset($_POST['completado'])){
       Rellene los datos correctamente.
     </div>";
   }else{
-    $sql="UPDATE c_planificar SET completado=1 WHERE id_plan='$id'";
+    $sql="UPDATE plan SET completado=1 WHERE id_plan='$id'";
     if (mysqli_query($conexion,$sql))
     {
       $errores .="<div class='alert alert-success alert-dismissible fade show' role='alert'>
@@ -196,23 +197,31 @@ if(isset($_POST['completado'])){
 if(isset($_POST['agregarbit'])){
   error_reporting(0);
   if($_SERVER['REQUEST_METHOD']=='POST'){ 
-  $cultivo=$_POST['txtcultivo'];
   $plan=$_POST['txtplan'];
   $lugar=$_POST['txtlugar'];
-  $fecha=$_POST['txtfecha'];
+  //$fecha=$_POST['txtfecha'];
   $descripcion=$_POST['txtdescripcion'];
+  $marcacompleta = $_POST['completar'];
 
-  if($cultivo == '' || $plan == '' || $lugar == '' || $fecha == '' || $descripcion == ''){
+  if($plan == '' || $lugar == '' || $descripcion == ''){
       $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
       Rellene todos los datos correctamente.
     </div>";
   }else{
-  $sql="INSERT INTO c_bitacora (id_bitacora,cultivo_id,plan_id,fecha,lugar,desarollo) VALUES (NULL,'$cultivo','$plan','$fecha','$lugar','$descripcion')";
+  $sql="INSERT INTO bitacora (id_bitacora,plan_id,fecha,lugar,desarollo) VALUES (NULL,'$plan',now(),'$lugar','$descripcion')";
   if (mysqli_query($conexion,$sql))
   {
      $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
       Se agrego una bitacora a la base de datos.
     </div>";
+    /* if($marcacompleta == 'on'){
+          $com = "UPDATE plan SET completado = 1 WHERE id_plan = '$plan'";
+          if (mysqli_query($conexion, $com)) {
+            $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
+            Se marco como completada.
+          </div>";
+          }
+    }*/
   }else{
       //Añadir una excepción
       $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>

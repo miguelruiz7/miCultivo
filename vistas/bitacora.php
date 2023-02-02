@@ -28,7 +28,7 @@ if(!empty($errores)): ?>
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <?php 
             if(isset($_GET['ver'])){
-            $result = mysqli_query($conexion, "SELECT id_bitacora, plan_id, fecha,lugar,desarollo,c_bitacora.cultivo_id, c_datos.nombre, c_planificar.nombre_plan FROM c_bitacora, c_datos, c_planificar WHERE c_bitacora.cultivo_id=c_datos.id AND c_bitacora.plan_id=c_planificar.id_plan AND c_bitacora.cultivo_id = '$cultivo_id'");
+            $result = mysqli_query($conexion, "SELECT id_bitacora,fecha,lugar,desarollo, plan.nombre_plan,cultivo.nombre FROM bitacora, plan, cultivo WHERE cultivo.id = '$cultivo_id' AND bitacora.plan_id = plan.id_plan AND plan.cultivo_id = cultivo.id");
             $rows = mysqli_num_rows($result);
           if($rows > 0){
             while ($datos = mysqli_fetch_array($result)) {

@@ -1,6 +1,6 @@
 <?php 
 	$host = "localhost";    
-	$basededatos = "sistemas"; 
+	$basededatos = "sistemas_"; 
 	$usuariodb = "root";    
 	$clavedb = ""; 
 
