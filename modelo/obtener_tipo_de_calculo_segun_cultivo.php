@@ -1,0 +1,40 @@
+<?php
+    error_reporting(0);
+    include('../controlador/conexion.php');
+    $cultivo_id = $_POST['cultivo_id'];
+
+
+    //Seleciona el tipo de id segun corresponda esta la guarda en una variable para proceder a buscar el tipo de calculo
+    $seltipo=mysqli_query($conexion,"SELECT * FROM cultivo WHERE id='$cultivo_id'");
+    if(mysqli_num_rows($seltipo)>0){
+        $tipo_aidi= mysqli_fetch_array($seltipo);
+        $tipo_id = $tipo_aidi['tipo_id'];
+    }
+
+
+
+    $tipos = array();
+
+    // Consulta a la base de datos para obtener los tipos de la marca seleccionada
+    $query = "SELECT * FROM calculo WHERE tipo_id = $tipo_id";
+    $result = mysqli_query($conexion, $query);
+
+    while($row = mysqli_fetch_assoc($result)) {
+        $tipos[] = $row;
+    }
+    ?>
+        <select name="txttipo" id="tipodato" class="form-control rounded-3" id="floatingInput">
+            <option value="0" selected="">Seleccione:</option> 
+    <?php
+    // Mostramos el select de tipos.
+    foreach($tipos as $tipo) {
+        ?>
+        <option value="<?php echo $tipo['id'];?>"><?php echo $tipo['nombre']; ?></option>
+    <?php
+    }
+  ?>
+ </select>
+ <label for="floatingInput">Selecciona el tipo:</label>
+   <?php
+?>
+                     
