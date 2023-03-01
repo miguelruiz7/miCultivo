@@ -11,17 +11,3 @@ $(document).ready(function(){
         });
     });
 });
-
-$(document).ready(function(){
-    $("#tipodato").change(function(){
-        var tipo_id = $(this).val();
-        $.ajax({
-            url: "modelo/obtener_datos_calculo.php",
-            type: "POST",
-            data: {tipo_id:tipo_id},
-            success: function(data){
-                $("#muestra").html(data);
-            }
-        });
-    });
-});

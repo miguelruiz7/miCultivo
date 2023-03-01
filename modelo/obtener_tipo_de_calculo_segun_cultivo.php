@@ -16,7 +16,7 @@
     $tipos = array();
 
     // Consulta a la base de datos para obtener los tipos de la marca seleccionada
-    $query = "SELECT * FROM calculo WHERE tipo_id = $tipo_id";
+    $query = "SELECT * FROM calculo WHERE tipo_id IN ($tipo_id, 99)";
     $result = mysqli_query($conexion, $query);
 
     while($row = mysqli_fetch_assoc($result)) {
@@ -35,6 +35,26 @@
   ?>
  </select>
  <label for="floatingInput">Selecciona el tipo:</label>
+ <script>
+    $(document).ready(function(){
+    $("#tipodato").change(function(){
+        var tipo_id = $(this).val();
+        $.ajax({
+            url: "modelo/obtener_datos_calculo.php",
+            type: "POST",
+            data: {tipo_id: tipo_id},
+            success: function(data){
+                $("#muestra").html(data);
+            }
+        });
+
+        if(tipo_id==0){
+            $('#muestra').html('');
+        }
+    });
+});
+ </script>
    <?php
+   
 ?>
                      

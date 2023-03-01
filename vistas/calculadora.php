@@ -45,6 +45,14 @@
                       </div>
 
                     </div>
+
+                    <div class="col-md-8">
+                    <h2 class='fw-light m-2 text-center'>Su resultado:</h2>
+                    <div class="container text-center" id="resultado" class="form-floating mb-3">
+                      <!-- Aqui deben aparecer los resultados -->
+                      
+                      </div>
+                    </div>
         
                     </div>
                     </div>
