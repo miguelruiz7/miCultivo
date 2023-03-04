@@ -1,8 +1,4 @@
-<div class="container">
-  <?php
-  include('vistas/modulos/modales_formularios/agregar_bitacora.php');
-  ?>
-</div>
+
 <!-- Notificaciones -->
 <section class="py-5 container">
 <?php 
@@ -28,7 +24,7 @@ if(!empty($errores)): ?>
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <?php 
             if(isset($_GET['ver'])){
-            $result = mysqli_query($conexion, "SELECT id_bitacora,fecha,lugar,desarollo, plan.nombre_plan,cultivo.nombre FROM bitacora, plan, cultivo WHERE cultivo.id = '$cultivo_id' AND bitacora.plan_id = plan.id_plan AND plan.cultivo_id = cultivo.id");
+            $result = mysqli_query($conexion, "SELECT id_bitacora, plan_id, GROUP_CONCAT('<strong>',DATE_FORMAT(fecha, '%d-%m-%Y'),' a las ',DATE_FORMAT(fecha, '%H:%i:%s'),' en ',lugar, ': </strong> </br> <p>', desarollo SEPARATOR'</p> </br>') as descripciones, GROUP_CONCAT(fecha SEPARATOR '<br>') as fecha, plan.nombre_plan,cultivo.nombre FROM bitacora, plan, cultivo WHERE cultivo.id = '$cultivo_id' AND bitacora.plan_id = plan.id_plan AND plan.cultivo_id = cultivo.id GROUP BY plan_id;");
             $rows = mysqli_num_rows($result);
           if($rows > 0){
             while ($datos = mysqli_fetch_array($result)) {
@@ -43,4 +39,9 @@ if(!empty($errores)): ?>
           </div>
         </div>
     </div>
+</div>
+<div class="container">
+  <?php
+  include('vistas/modulos/modales_formularios/agregar_bitacora.php');
+  ?>
 </div>

@@ -18,8 +18,8 @@
               <div class="card-body">
             
               <h4 class="fw-light text-dark"><?php echo $datos["nombre_plan"];?></h4>
-              <h6 class="fw-light text-dark">Publicado el: <?php echo $datos["fecha"];?></h6>
-              <h6 class="fw-light text-dark"><?php echo $datos["desarollo"];?></h6>
+             <!-- <h6 class="fw-light text-dark">Publicado el: <?php echo $datos["fecha"];?></h6> -->
+              <h6 class="fw-light text-dark"><?php echo $datos["descripciones"];?></h6>
 <br>
                   </div>
                 </div>

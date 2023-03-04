@@ -4,14 +4,14 @@ $cultivo_id = $_POST['plan_id'];
     $planes = array();
 
     // Consulta a la base de datos para obtener los planes de la marca seleccionada
-    $query = "SELECT * FROM plan WHERE cultivo_id = $cultivo_id";
+    $query = "SELECT * FROM plan WHERE cultivo_id = $cultivo_id AND completado = 0";
     $result = mysqli_query($conexion, $query);
 
     while($row = mysqli_fetch_assoc($result)) {
         $planes[] = $row;
     }
     ?>
-        <select name="txtplan" class="form-control rounded-3" id="floatingInput">
+        <select name="txtplan" id="txtplan" class="form-control rounded-3" id="floatingInput" required>
             <option value="0" selected="">Seleccione:</option> 
     <?php
     // Mostramos el select de planes.

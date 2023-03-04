@@ -8,16 +8,16 @@
         </div>
                <div class="modal-body">
                 <div class="modal-body p-5 pt-0">
-                   <form action="<?php echo basename($_SERVER['PHP_SELF']);?>" method="post">
+                   <form id="bitacora" action="<?php echo basename($_SERVER['PHP_SELF']);?>" method="post">
                    <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-1">
                       <div class="col-md-12">
                     <div class="form-floating mb-3">
 
-                    <select name="txtcultivo" id="cultivo" class="form-control rounded-3" id="floatingInput">
-                              <option value="0" selected="">Seleccione:</option> 
+                    <select name="txtcultivo" id="cultivo" class="form-control rounded-3" id="floatingInput" required>
+                              <option value="" selected="">Seleccione:</option> 
                               <?php
-                            include('conexion.php');
+                           // include('conexion.php');
                             $generales="SELECT * FROM cultivo";
                             $resultado= mysqli_query($conexion,$generales);
                                 while($valores= mysqli_fetch_array($resultado)){
@@ -45,7 +45,7 @@
                       
                       <div class="col-md-12">
                         <div class="form-floating mb-3">
-                      <input type="text" name="txtlugar" class="form-control rounded-3" id="floatingInput">
+                      <input type="text" name="txtlugar" id="txtlugar" class="form-control rounded-3" id="floatingInput" required>
                       <label for="floatingInput">Ubicación:</label>
                     </div>
                       </div>
@@ -53,7 +53,7 @@
                       
                         <div class="col-md-12">
                         <div class="form-floating mb-3">
-                      <textarea type="text" name="txtdescripcion" class="form-control rounded-3" id="floatingInput"></textarea>
+                      <textarea type="text" name="txtdescripcion" id="txtdesarollo" class="form-control rounded-3" id="floatingInput" required></textarea>
                       <label for="floatingInput">Descripción</label>
                       </div>
                   </div>
@@ -63,11 +63,11 @@
                   </div></center>
                             </div>
         <div class="modal-footer">
-          <button type="submit" name="agregarbit" class="btn btn-outline-success me-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+          <button type="submit" id="enviarBit" name="agregarbit" class="btn btn-outline-success me-2" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
     <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
   </svg> Agregar</button>
-          <button type="button" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+          <button type="button" onclick="limpiarCamposBit()" id="cerrarBit" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
     <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
   </svg> Cerrar</button>

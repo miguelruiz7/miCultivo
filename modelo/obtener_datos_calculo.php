@@ -3,23 +3,24 @@
     $tipo_id = $_POST['tipo_id'];
 
     switch($tipo_id){
+        // Densidad de siembra (Granos)
         case('1'):
             ?>
             <form id="dsiembra">
             <div class="form-floating mb-3">
-                      <input type="text" name="perdida" class="form-control rounded-3" id="perdida">
+                      <input type="text" name="perdida" class="form-control rounded-3" id="perdida" required>
                       <label for="floatingInput">Perdida de semillas</label>
                       </div>
             <div class="form-floating mb-3">
-                      <input type="text" name="margen" class="form-control rounded-3" id="margen">
+                      <input type="text" name="margen" class="form-control rounded-3" id="margen" required>
                       <label for="floatingInput">Margen de seguridad</label>
                       </div>
              <div class="form-floating mb-3">
-                      <input type="text" name="densidad" class="form-control rounded-3" id="densidad">
+                      <input type="text" name="densidad" class="form-control rounded-3" id="densidad" required>
                       <label for="floatingInput">Densidad de siembra</label>
                       </div>    
              <div class="form-floating mb-3">
-                      <input type="text" name="distancia" class="form-control rounded-3" id="distancia">
+                      <input type="text" name="distancia" class="form-control rounded-3" id="distancia" required>
                       <label for="floatingInput">Distancia entre surcos (m)</label>
                       </div>   
 
@@ -33,29 +34,34 @@
                       <!-- Script -->
 
                       <script>
-	$(document).ready(function(){
-	    $("#dsiembra").submit(function(event){
-			event.preventDefault();
-	        var perdida = $("#perdida").val();
-	        var margen = $("#margen").val();
-	        var densidad = $("#densidad").val();
-            var distancia = $("#distancia").val();
-	        var calculo = $("#calculo").val();
-	        $.ajax({
-	            url: "modelo/calculadora.php",
-	            type: "POST",
-	            data: { perdida: perdida, margen: margen, densidad: densidad, distancia:distancia, calculo:calculo},
-	            success: function(resultados,unidades){
-	                $("#resultado").html(resultados,unidades);
-	            }
-	        });
-	    });
-	});
-	</script>
+                        //------------------------------------//
+                        //--Codigo para acceder al resultado--// 
+                        //----Densidad de siembra granos------// 
+                        //------------------------------------//
+                        $(document).ready(function(){
+                            $("#dsiembra").submit(function(event){
+                                event.preventDefault();
+                                var perdida = $("#perdida").val();
+                                var margen = $("#margen").val();
+                                var densidad = $("#densidad").val();
+                                var distancia = $("#distancia").val();
+                                var calculo = $("#calculo").val();
+                                $.ajax({
+                                    url: "modelo/calculadora.php",
+                                    type: "POST",
+                                    data: { perdida: perdida, margen: margen, densidad: densidad, distancia:distancia, calculo:calculo},
+                                    success: function(resultados,unidades){
+                                        $("#resultado").html(resultados,unidades);
+                                    }
+                                });
+                            });
+                        });
+	                </script>
             <?php
         break;
 
         case('2'):
+            // Densidad de siembra (Forrajes)
             ?>
             <form id="dsiembraf">
             <div class="form-floating mb-3">
@@ -80,39 +86,44 @@
                       <!-- Script -->
 
                       <script>
-	$(document).ready(function(){
-	    $("#dsiembraf").submit(function(event){
-			event.preventDefault();
-	        var epoca = $("#epoca").val();
-	        var calculo = $("#calculo").val();
-	        $.ajax({
-	            url: "modelo/calculadora.php",
-	            type: "POST",
-	            data: {epoca:epoca, calculo:calculo},
-	            success: function(resultados,unidades){
-	                $("#resultado").html(resultados,unidades);
-	            }
-	        });
-	    });
-	});
+                         //------------------------------------//
+                        //--Codigo para acceder al resultado--// 
+                        //----Densidad de siembra forrajes----// 
+                        //------------------------------------//
+                        $(document).ready(function(){
+                            $("#dsiembraf").submit(function(event){
+                                event.preventDefault();
+                                var epoca = $("#epoca").val();
+                                var calculo = $("#calculo").val();
+                                $.ajax({
+                                    url: "modelo/calculadora.php",
+                                    type: "POST",
+                                    data: {epoca:epoca, calculo:calculo},
+                                    success: function(resultados,unidades){
+                                        $("#resultado").html(resultados,unidades);
+                                    }
+                                });
+                            });
+                        });
 	</script>
             <?php
         break;
 
 
         case('3'):
+            //Dosis de agroquímicos
             ?>
             <form id="dosis">
             <div class="form-floating mb-3">
-                      <input type="text" name="consumo" class="form-control rounded-3" id="consumo">
+                      <input type="text" name="consumo" class="form-control rounded-3" id="consumo" required>
                       <label for="floatingInput">Consumo del equipo (L/Ha)</label>
                       </div>
             <div class="form-floating mb-3">
-                      <input type="text" name="producto" class="form-control rounded-3" id="producto">
+                      <input type="text" name="producto" class="form-control rounded-3" id="producto" required>
                       <label for="floatingInput">Cantidad de producto(L/Ha)</label>
                       </div>
             <div class="form-floating mb-3">
-                      <input type="text" name="concentracion" class="form-control rounded-3" id="concentracion">
+                      <input type="text" name="concentracion" class="form-control rounded-3" id="concentracion" required>
                       <label for="floatingInput">Concentración del producto (%):</label>
                       </div>
 
@@ -126,33 +137,100 @@
                       <!-- Script -->
 
                       <script>
-	$(document).ready(function(){
-	    $("#dosis").submit(function(event){
-			event.preventDefault();
-	        var consumo = $("#consumo").val();
-            var producto = $("#producto").val();
-            var concentracion = $("#concentracion").val();
-	        var calculo = $("#calculo").val();
-	        $.ajax({
-	            url: "modelo/calculadora.php",
-	            type: "POST",
-	            data: {consumo:consumo, producto:producto, concentracion:concentracion, calculo:calculo},
-	            success: function(resultados,unidades){
-	                $("#resultado").html(resultados,unidades);
-	            }
-	        });
-	    });
-	});
+                        //------------------------------------//
+                        //--Codigo para acceder al resultado--// 
+                        //-------Dosis de agroquimicos---------// 
+                        //------------------------------------//
+                        $(document).ready(function(){
+                            $("#dosis").submit(function(event){
+                                event.preventDefault();
+                                var consumo = $("#consumo").val();
+                                var producto = $("#producto").val();
+                                var concentracion = $("#concentracion").val();
+                                var calculo = $("#calculo").val();
+                                $.ajax({
+                                    url: "modelo/calculadora.php",
+                                    type: "POST",
+                                    data: {consumo:consumo, producto:producto, concentracion:concentracion, calculo:calculo},
+                                    success: function(resultados,unidades){
+                                        $("#resultado").html(resultados,unidades);
+                                    }
+                                });
+                            });
+                        });
 	</script>
             <?php
         break;
 
-        
 
+
+        case('4'):
+            //Rendimiento estimado
+            ?>
+            <form id="renest">
+            <div class="form-floating mb-3">
+                      <input type="text" name="mazorca" class="form-control rounded-3" id="mazorca" required>
+                      <label for="floatingInput">Mazorcas por hectárea (Promedio)</label>
+                      </div>
+            <div class="form-floating mb-3">
+                      <input type="text" name="granosmazorca" class="form-control rounded-3" id="granosmazorca" required>
+                      <label for="floatingInput">Numero de granos por mazorca (Promedio)</label>
+                      </div>
+            <div class="form-floating mb-3">
+                      <input type="text" name="filas" class="form-control rounded-3" id="filas" required>
+                      <label for="floatingInput">Promedio de filas (Mazorca)</label>
+                      </div>
+            <div class="form-floating mb-3">
+                      <input type="text" name="granosfila" class="form-control rounded-3" id="granosfila" required>
+                      <label for="floatingInput">Promedio de granos por fila (Mazorca)</label>
+                      </div>
+
+            <div class="form-floating mb-3">
+                      <input type="text" name="peso" class="form-control rounded-3" id="peso" required>
+                      <label for="floatingInput">Peso de mil granos</label>
+                      </div>
+
+            
+
+                      <input type="hidden" name="calculo" class="form-control rounded-3" id="calculo" value="4"> 
+
+                      <button type="submit" class="btn btn-outline-light me-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calculator-fill" viewBox="0 0 16 16">
+  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2 .5v2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5zm0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zM4.5 9a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM4 12.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zM7.5 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM7 9.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm.5 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM10 6.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm.5 2.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5h-1z"/>
+</svg> Calcular</button>
+            </form> 
+
+                      <!-- Script -->
+
+                      <script>
+                        //------------------------------------//
+                        //--Codigo para acceder al resultado--// 
+                        //-------Rendimiento estimado---------// 
+                        //------------------------------------//
+                        $(document).ready(function(){
+                            $("#renest").submit(function(event){
+                                event.preventDefault();
+                                var mazorca = $("#mazorca").val();
+                                var granosmazorca = $("#granosmazorca").val();
+                                var filas = $("#filas").val();
+                                var granosfila = $("#granosfila").val();
+                                var calculo = $("#calculo").val();
+                                $.ajax({
+                                    url: "modelo/calculadora.php",
+                                    type: "POST",
+                                    data: {mazorca:mazorca, granosmazorca:granosmazorca, filas:filas, granosfila:granosfila, calculo:calculo},
+                                    success: function(resultados,unidades){
+                                        $("#resultado").html(resultados,unidades);
+                                    }
+                                });
+                            });
+                        });
+	</script>
+            <?php
+        break;
 
         default:
-            echo "defecti";
-        break;
+        echo "defecti";
+    break;
 
      }
 

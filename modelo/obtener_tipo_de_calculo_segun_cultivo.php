@@ -11,8 +11,6 @@
         $tipo_id = $tipo_aidi['tipo_id'];
     }
 
-
-
     $tipos = array();
 
     // Consulta a la base de datos para obtener los tipos de la marca seleccionada

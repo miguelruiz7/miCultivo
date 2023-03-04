@@ -134,7 +134,7 @@ if(isset($_POST['eliminar'])){
 if(isset($_POST['agregarplan'])){
   if($_SERVER['REQUEST_METHOD']=='POST'){
   $id_cultivo = $_POST['idcultivo'];
-  $nombre=$_POST['txtnombre'];
+  $nombre = ucfirst($_POST['txtnombre']);
   $inicio=$_POST['txtini'];
   $final=$_POST['txtfin'];
   $descripcion=$_POST['txtdescripcion'];
@@ -147,7 +147,20 @@ if(isset($_POST['agregarplan'])){
       $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
       Rellene todos los datos correctamente.
     </div>";
-  }else{
+  }
+
+   //Valida si el usuario esta en la base de datos
+   $usr=mysqli_query($conexion,"SELECT * FROM plan WHERE nombre_plan = '$nombre' AND cultivo_id = '$id_cultivo'");
+   if (mysqli_num_rows($usr)>0)
+   {
+    $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+    $nombre, ya se encuentra activo en el plan.
+  </div>";
+   }
+  
+  
+  
+  if($errores == ''){
   
   $sql="INSERT INTO plan (id_plan,nombre_plan,descripcion_p,recurso_hum,recurso_econ,recurso_mat,inicio_plan,final_plan,completado,cultivo_id) VALUES (NULL,'$nombre','$descripcion','$humanos','$presupuesto','$materiales','$inicio','$final',0,'$id_cultivo')";
   if (mysqli_query($conexion,$sql))
@@ -200,7 +213,7 @@ if(isset($_POST['agregarbit'])){
   $plan=$_POST['txtplan'];
   $lugar=$_POST['txtlugar'];
   //$fecha=$_POST['txtfecha'];
-  $descripcion=$_POST['txtdescripcion'];
+  $descripcion=ucfirst($_POST['txtdescripcion']);
   $marcacompleta = $_POST['completar'];
 
   if($plan == '' || $lugar == '' || $descripcion == ''){
@@ -214,14 +227,14 @@ if(isset($_POST['agregarbit'])){
      $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
       Se agrego una bitacora a la base de datos.
     </div>";
-    /* if($marcacompleta == 'on'){
+    if(isset($marcacompleta)){
           $com = "UPDATE plan SET completado = 1 WHERE id_plan = '$plan'";
           if (mysqli_query($conexion, $com)) {
             $errores .="<div class='alert alert-primary alert-dismissible fade show' role='alert'>
             Se marco como completada.
           </div>";
           }
-    }*/
+    }
   }else{
       //Añadir una excepción
       $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
