@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `calculo` (
   `tipo_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `tipo_id` (`tipo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `calculo`
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `cultivo` (
   `rendimiento` double NOT NULL,
   PRIMARY KEY (`id`),
   KEY `tipo_id` (`tipo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=226 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=226 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `cultivo`
@@ -104,7 +104,7 @@ DROP TABLE IF EXISTS `plan`;
 CREATE TABLE IF NOT EXISTS `plan` (
   `id_plan` int NOT NULL AUTO_INCREMENT,
   `nombre_plan` varchar(50) NOT NULL,
-  `descripcion_p` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `descripcion_p` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `recurso_hum` int NOT NULL,
   `recurso_econ` float NOT NULL,
   `recurso_mat` varchar(856) NOT NULL,
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `plan` (
   `cultivo_id` int NOT NULL,
   PRIMARY KEY (`id_plan`),
   KEY `cultivo_id` (`cultivo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `plan`
@@ -161,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `tipo` (
   `id_c` int NOT NULL,
   `nombre_c` varchar(34) NOT NULL,
   PRIMARY KEY (`id_c`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tipo`
