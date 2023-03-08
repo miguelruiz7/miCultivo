@@ -45,7 +45,7 @@ if(isset($_POST['agregar'])){
       </div>";
     }
 
-    if($inicio>$final or $inicio<$final){
+    if($inicio>$final){
       $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
       Introduce una fecha que no sea mayor a la final.
     </div>";
