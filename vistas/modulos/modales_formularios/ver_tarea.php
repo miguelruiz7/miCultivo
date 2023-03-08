@@ -20,6 +20,7 @@
               <div class="card-body">
             
               <h4 class="fw-light text-dark"><?php echo $datos["nombre_plan"];?></h4>
+              <h6 class="fw-light text-dark"><?php echo $datos["periodo"];?></h6>
               <h6 class="fw-light text-dark"><?php echo $datos["descripcion_p"];?></h6>
               <h5 class="fw-light text-dark text-danger">Recursos:</h5>
               <div class="container">

@@ -8,19 +8,19 @@
             ?>
             <form id="dsiembra">
             <div class="form-floating mb-3">
-                      <input type="text" name="perdida" class="form-control rounded-3" id="perdida" required>
+                      <input type="text" name="perdida" class="form-control rounded-3" id="perdida" pattern="[0-9]+([\.,][0-9]+)?" required>
                       <label for="floatingInput">Perdida de semillas</label>
                       </div>
             <div class="form-floating mb-3">
-                      <input type="text" name="margen" class="form-control rounded-3" id="margen" required>
+                      <input type="text" name="margen" class="form-control rounded-3" id="margen" pattern="[0-9]+([\.,][0-9]+)?" required>
                       <label for="floatingInput">Margen de seguridad</label>
                       </div>
              <div class="form-floating mb-3">
-                      <input type="text" name="densidad" class="form-control rounded-3" id="densidad" required>
+                      <input type="text" name="densidad" class="form-control rounded-3" id="densidad" pattern="[0-9]+([\.,][0-9]+)?" required>
                       <label for="floatingInput">Densidad de siembra</label>
                       </div>    
              <div class="form-floating mb-3">
-                      <input type="text" name="distancia" class="form-control rounded-3" id="distancia" required>
+                      <input type="text" name="distancia" class="form-control rounded-3" id="distancia" pattern="[0-9]+([\.,][0-9]+)?" required>
                       <label for="floatingInput">Distancia entre surcos (m)</label>
                       </div>   
 
@@ -115,15 +115,15 @@
             ?>
             <form id="dosis">
             <div class="form-floating mb-3">
-                      <input type="text" name="consumo" class="form-control rounded-3" id="consumo" required>
+                      <input type="text" name="consumo" class="form-control rounded-3" id="consumo" pattern="[0-9]+([\.,][0-9]+)?" required>
                       <label for="floatingInput">Consumo del equipo (L/Ha)</label>
                       </div>
             <div class="form-floating mb-3">
-                      <input type="text" name="producto" class="form-control rounded-3" id="producto" required>
+                      <input type="text" name="producto" class="form-control rounded-3" id="producto" pattern="[0-9]+([\.,][0-9]+)?" required>
                       <label for="floatingInput">Cantidad de producto(L/Ha)</label>
                       </div>
             <div class="form-floating mb-3">
-                      <input type="text" name="concentracion" class="form-control rounded-3" id="concentracion" required>
+                      <input type="text" name="concentracion" class="form-control rounded-3" id="concentracion" pattern="[0-9]+([\.,][0-9]+)?" required>
                       <label for="floatingInput">Concentración del producto (%):</label>
                       </div>
 
@@ -169,24 +169,24 @@
             ?>
             <form id="renest">
             <div class="form-floating mb-3">
-                      <input type="text" name="mazorca" class="form-control rounded-3" id="mazorca" required>
+                      <input type="text" name="mazorca" class="form-control rounded-3" id="mazorca" pattern="[0-9]+([\.,][0-9]+)?" required>
                       <label for="floatingInput">Mazorcas por hectárea (Promedio)</label>
                       </div>
             <div class="form-floating mb-3">
-                      <input type="text" name="granosmazorca" class="form-control rounded-3" id="granosmazorca" required>
+                      <input type="text" name="granosmazorca" class="form-control rounded-3" id="granosmazorca" pattern="[0-9]+([\.,][0-9]+)?" required>
                       <label for="floatingInput">Numero de granos por mazorca (Promedio)</label>
                       </div>
             <div class="form-floating mb-3">
-                      <input type="text" name="filas" class="form-control rounded-3" id="filas" required>
+                      <input type="text" name="filas" class="form-control rounded-3" id="filas" pattern="[0-9]+([\.,][0-9]+)?" required>
                       <label for="floatingInput">Promedio de filas (Mazorca)</label>
                       </div>
             <div class="form-floating mb-3">
-                      <input type="text" name="granosfila" class="form-control rounded-3" id="granosfila" required>
+                      <input type="text" name="granosfila" class="form-control rounded-3" id="granosfila" pattern="[0-9]+([\.,][0-9]+)?" required>
                       <label for="floatingInput">Promedio de granos por fila (Mazorca)</label>
                       </div>
 
             <div class="form-floating mb-3">
-                      <input type="text" name="peso" class="form-control rounded-3" id="peso" required>
+                      <input type="text" name="peso" class="form-control rounded-3" id="peso" pattern="[0-9]+([\.,][0-9]+)?" required>
                       <label for="floatingInput">Peso de mil granos</label>
                       </div>
 

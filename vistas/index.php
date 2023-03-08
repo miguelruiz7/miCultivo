@@ -48,7 +48,7 @@ if(!empty($errores)): ?>
       <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <?php
-          $result = mysqli_query($conexion, "SELECT * FROM plan, cultivo WHERE inicio_plan <= DATE_ADD(NOW(), INTERVAL 4 DAY) AND plan.completado = 0 AND plan.cultivo_id = cultivo.id;");
+          $result = mysqli_query($conexion, "SELECT id_plan, nombre, nombre_plan, inicio_plan, final_plan, descripcion, descripcion_p, recurso_hum, recurso_econ, recurso_mat, CONCAT('Del ',DATE_FORMAT(inicio_plan, '%d/%m/%Y'),' al ',DATE_FORMAT(final_plan, '%d/%m/%Y'),'.') as periodo FROM plan, cultivo WHERE inicio_plan <= DATE_ADD(NOW(), INTERVAL 4 DAY) AND plan.completado = 0 AND plan.cultivo_id = cultivo.id;");
           $rows = mysqli_num_rows($result);
         if($rows > 0){
           while ($datos = mysqli_fetch_array($result)) {

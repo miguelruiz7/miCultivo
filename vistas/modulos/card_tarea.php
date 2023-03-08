@@ -15,7 +15,7 @@
               <h6 class="fw-light"><?php echo $i_ubicacion; ?> <?php echo $datos["nombre"];?></h6>
                 <!-- Fecha -->
           <div class="row">
-            <div class="col mb-4"><h6 class="card-text"><?php echo $datos["inicio_plan"];?> al <?php echo $datos["final_plan"];?>  </h6></div>
+            <div class="col mb-4"><h6 class="card-text"><?php echo $datos["periodo"];?></h6></div>
           </div>
           
           <button type="button" class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#detalles<?php echo $datos["id_plan"]; ?>"><?php echo $i_externo; ?> Ver descripcion</button>
