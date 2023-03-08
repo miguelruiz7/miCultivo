@@ -1,13 +1,10 @@
 <?php
 //Se incluye la conexión
 include('controlador/conexion.php');
-
 //Incluimos dependencias
 include('modelo/bases.php');
-
 //Declaramos nuestros errores en vacío.
 $errores= '';
-
 //INSERTAR
 if(isset($_POST['agregar'])){
     if($_SERVER['REQUEST_METHOD']=='POST'){ 
@@ -51,8 +48,6 @@ if(isset($_POST['agregar'])){
   }
   }
 }
-
-
 //ACTUALIZAR
 if(isset($_POST['actualizar'])){
     if($_SERVER['REQUEST_METHOD']=='POST'){ 
@@ -91,7 +86,6 @@ if(isset($_POST['actualizar'])){
 }
   }
 }
-
 //ELIMINAR
 if(isset($_POST['eliminar'])){
     if($_SERVER['REQUEST_METHOD']=='POST'){ 
@@ -102,10 +96,6 @@ if(isset($_POST['eliminar'])){
 
       </div>";
     }else{
-
-
-      $sql = "DELETE FROM cultivo_bitacora WHERE cultivo_id='$id';"; 
-      if(mysqli_query($conexion,$sql)){
         $sqldel="DELETE FROM plan WHERE cultivo_id='$id';";
         $sqldel.="DELETE FROM cultivo WHERE id='$id'";
           if (mysqli_multi_query($conexion,$sqldel))
@@ -113,7 +103,7 @@ if(isset($_POST['eliminar'])){
             $errores .="<div class='alert alert-success alert-dismissible fade show' role='alert'>
             Se eliminó satisfactoriamente.
           </div>";
-          header('Location: index');
+            header('Location: index');
     
         }else{
             //Añadir una excepción
@@ -121,15 +111,9 @@ if(isset($_POST['eliminar'])){
             Falló.
           </div>";
         }
-      }else{
-
-      }
 }
   }
 }
-
-
-
 //INSERTAR PLAN
 if(isset($_POST['agregarplan'])){
   if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -244,7 +228,7 @@ if(isset($_POST['agregarbit'])){
 }
 }
 }
-
+//Incluimos nuestras vistas
 require('vistas/encabezado.php');
 require('vistas/index.php');
 require('vistas/modulos/pies/pie.php');

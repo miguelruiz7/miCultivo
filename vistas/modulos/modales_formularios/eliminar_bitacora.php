@@ -18,18 +18,13 @@
               <div class="card-body">
             
               <h4 class="fw-light text-dark"><?php echo $datos["nombre_plan"];?></h4>
-<h6 class="fw-light text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record-fill" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8 13A5 5 0 1 0 8 3a5 5 0 0 0 0 10z"/>
-</svg> <?php echo $datos["nombre"];?></h6>
+<h6 class="fw-light text-dark"><?php echo $i_ubicacion; ?> <?php echo $datos["nombre"];?></h6>
 <br>
 
                   <form action="<?php echo basename($_SERVER['PHP_SELF']);?>" method="post">
          <input type="hidden" name="cultivo_id" value="<?php echo $cultivo_id;?>">
         <input type="hidden" name="id_plan" value="<?php echo $datos["plan_id"];?>">
-        <button type="submit" name="eliminar" class="btn btn-outline-danger me-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-  </svg> Eliminar</button>
+        <button type="submit" name="eliminar" class="btn btn-outline-danger me-2"><?php echo $i_basura; ?> Eliminar</button>
           </form>
                   </div>
                 </div>

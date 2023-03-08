@@ -26,15 +26,15 @@
               
                       <div class="row align-items-start">
                         <div class="col">
-                          <h5 class="fw-light text-dark text-danger">Humanos: <?php echo $datos["recurso_hum"];?></h5>
+                          <h5 class="fw-light text-dark text-danger"><?php echo $i_humanos; ?> Humanos: <?php echo $datos["recurso_hum"];?></h5>
                         </div>
                         <div class="col">
-                          <h5 class="fw-light text-dark text-danger">Economicos: $ <?php echo $datos["recurso_econ"];?></h5>
+                          <h5 class="fw-light text-dark text-danger"><?php echo $i_moneda; ?> Economicos: $<?php echo $datos["recurso_econ"];?></h5>
                         </div>
                       </div>
                       <div class="row align-items-start">
                         <div class="col">
-                          <h5 class="fw-light text-dark text-danger">Materiales:</h5>
+                          <h5 class="fw-light text-dark text-danger"><?php echo $i_lista; ?> Materiales:</h5>
                         </div>
                         <div class="row align-items-start">
                         <div class="col">

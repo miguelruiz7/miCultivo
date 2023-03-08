@@ -65,7 +65,7 @@
             ?>
             <form id="dsiembraf">
             <div class="form-floating mb-3">
-                    <select  id="epoca" class="form-control rounded-3" id="floatingInput">
+                    <select  id="epoca" class="form-control rounded-3" id="floatingInput" required>
                     <option value="0" selected="">Seleccione:</option> 
                     <option value="1">Invierno</option>
                     <option value="2">Primavera</option>
@@ -229,7 +229,7 @@
         break;
 
         default:
-        echo "defecti";
+        echo "defecto";
     break;
 
      }

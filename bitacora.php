@@ -1,10 +1,12 @@
 <?php
-$errores= '';
+
+//Se incluye la conexión
 include('controlador/conexion.php');
 
 //Incluimos dependencias
 include('modelo/bases.php');
 
+$errores= '';
 //ELIMINAR
 if(isset($_POST['eliminar'])){
     if($_SERVER['REQUEST_METHOD']=='POST'){ 
@@ -25,7 +27,7 @@ if(isset($_POST['eliminar'])){
 }
   }
 }
-
+//Incluimos nuestras vistas
 require('vistas/encabezado.php');
 require('vistas/bitacora.php');
 require('vistas/modulos/pies/pie.php');

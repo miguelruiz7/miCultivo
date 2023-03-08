@@ -4,7 +4,6 @@
   <script src="assets/js/ver_calculo.js"></script>
   <script src="assets/js/alertas.js"></script>
   <script src="assets/js/planes.js"></script>
-<script src="assets/js/validarform.js"></script> 
  <script src="assets/js/bitacora.js"></script>
   </body>
 </html>
