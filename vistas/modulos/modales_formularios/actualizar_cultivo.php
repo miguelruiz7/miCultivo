@@ -73,7 +73,7 @@
                       <div class="col-md-6">
                         <div class="form-floating mb-3">
                       <input type="text" name="txtarea" class="form-control rounded-3" id="floatingInput" value="<?php echo $datos['area'];?>" pattern="[0-9]+([\.,][0-9]+)?"  required>
-                      <label for="floatingInput">Area total del cultivo (Hectareas) <?php echo $i_numeros; ?></label>
+                      <label for="floatingInput">Area total del cultivo (Hectáreas) <?php echo $i_numeros; ?></label>
                     </div>
                       </div>
                       

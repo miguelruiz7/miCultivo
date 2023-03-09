@@ -170,7 +170,7 @@
             <form id="renest">
             <div class="form-floating mb-3">
                       <input type="text" name="hectareas" class="form-control rounded-3" id="hectareas" pattern="[0-9]+([\.,][0-9]+)?" required>
-                      <label for="floatingInput">Área total del cultivo (Hectareas)</label>
+                      <label for="floatingInput">Área total del cultivo (Hectáreas)</label>
                       </div>
             <div class="form-floating mb-3">
                       <input type="text" name="mazorca" class="form-control rounded-3" id="mazorca" pattern="[0-9]+([\.,][0-9]+)?" required>
@@ -251,7 +251,7 @@
                       </div> 
             <div class="form-floating mb-3">
                       <input type="text" name="area" class="form-control rounded-3" id="area" pattern="[0-9]+([\.,][0-9]+)?" required>
-                      <label for="floatingInput">Área del cultivo</label>
+                      <label for="floatingInput">Área del cultivo (Hectáreas)</label>
                       </div>     
                       <input type="hidden" name="calculo" class="form-control rounded-3" id="calculo" value="5"> 
 

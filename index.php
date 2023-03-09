@@ -109,7 +109,7 @@ if(isset($_POST['actualizar'])){
 }
   }
 }
-//ELIMINAR
+//ELIMINAR CULTIVO
 if(isset($_POST['eliminar'])){
     if($_SERVER['REQUEST_METHOD']=='POST'){ 
       // Se almacenan los valores obtenidos por el formulario en las siguientes variables.
