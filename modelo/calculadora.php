@@ -54,9 +54,50 @@
 					
 					break;
 
+					case '5':
+						$resultados = '';
+						//Tasas de aplicación de fertilizante
+
+						// Nutrientes
+							$n = $_POST['n'];
+							$p = $_POST['p'];
+							$k = $_POST['k'];
+
+						// Otros parametros
+						    $area= $_POST['area'];
+							$kaplicados = $_POST['kaplicados'];
+						
+						
+						//Si no hay ningun valor debe obligar a llenar uno
+							if(empty($n) && empty($p) && empty($k) ){
+								$resultados .= "<h2 class='fw-light m-2 text-center'>Debes por lo menos insertar en algún nutriente su valor para calcular</h2>";
+								$unidades ='.';
+							}
+
+							if(isset($n) && $n>0){
+								$tasaN = (($kaplicados) * (($n)/(100)));
+								$resultados .= "<h2 class='fw-light m-2 text-center'>La tasa de aplicación del Nitrogeno (N) fue de:</h2><h2 class='fw-light' id='txtresultado'>".round($tasaN,2)."</h2><h2 class='fw-light'> kilogramos en ".$area." hectareas</h2><br>";
+								$unidades ='.';
+							}
+
+							if(isset($p) && $p>0){
+								$tasaP = (($kaplicados) * (($p)/(100)));
+								$resultados .= "<h2 class='fw-light m-2 text-center'>La tasa de aplicación del Fosforo (P) fue de:</h2><h2 class='fw-light' id='txtresultado'>".round($tasaP,2)."</h2><h2 class='fw-light'> kilogramos en ".$area." hectareas</h2><br>";
+								$unidades ='.';
+							}
+
+							if(isset($k) && $k>0){
+								$tasaK = (($kaplicados) * (($k)/(100)));
+							$resultados .= "<h2 class='fw-light m-2 text-center'>La tasa de aplicación del Potasio (K) fue de:</h2><h2 class='fw-light' id='txtresultado'>".round($tasaK,2)."</h2><h2 class='fw-light'> kilogramos en ".$area." hectareas</h2><br>";
+							$unidades ='.';
+							}
+							break;
+
 		default:
 			$resultados = 'Error';
+			$unidades ='.';
 			break;
+			
 	}
 
 	echo $resultados;

@@ -208,13 +208,78 @@
                                 var mazorca = $("#mazorca").val();
                                 var filas = $("#filas").val();
                                 var granosfila = $("#granosfila").val();
-                                var calculo = $("#calculo").val();
                                 var peso = $("#peso").val();
                                 var hectareas = $("#hectareas").val(); 
+                                var calculo = $("#calculo").val();
                                 $.ajax({
                                     url: "modelo/calculadora.php",
                                     type: "POST",
                                     data: {mazorca:mazorca,filas:filas, granosfila:granosfila, peso:peso, hectareas:hectareas, calculo:calculo},
+                                    success: function(resultados,unidades){
+                                        $("#resultado").html(resultados,unidades);
+                                    }
+                                });
+                            });
+                        });
+	</script>
+            <?php
+        break;
+
+
+        
+        case('5'):
+            	//Tasas de aplicación de fertilizante
+            ?>
+            <form id="renest">
+                <h4 class="fw-light">Nutrientes</h4>
+            <div class="form-floating mb-3">
+                      <input type="text" name="n" class="form-control rounded-3" id="n" pattern="[0-9]+([\.,][0-9]+)?" >
+                      <label for="floatingInput">Nitrogeno (N)</label>
+                      </div>
+            <div class="form-floating mb-3">
+                      <input type="text" name="p" class="form-control rounded-3" id="p" pattern="[0-9]+([\.,][0-9]+)?" >
+                      <label for="floatingInput">Fosforo (P)</label>
+                      </div>
+            <div class="form-floating mb-3">
+                      <input type="text" name="k" class="form-control rounded-3" id="k" pattern="[0-9]+([\.,][0-9]+)?" >
+                      <label for="floatingInput">Potasio (k)</label>
+                      </div>
+                <h4 class="fw-light">Medidas</h4>
+            <div class="form-floating mb-3">
+                      <input type="text" name="kaplicados" class="form-control rounded-3" id="kaplicados" pattern="[0-9]+([\.,][0-9]+)?" required>
+                      <label for="floatingInput">Kilogramos aplicados</label>
+                      </div> 
+            <div class="form-floating mb-3">
+                      <input type="text" name="area" class="form-control rounded-3" id="area" pattern="[0-9]+([\.,][0-9]+)?" required>
+                      <label for="floatingInput">Area del cultivo</label>
+                      </div>     
+                      <input type="hidden" name="calculo" class="form-control rounded-3" id="calculo" value="5"> 
+
+                      <button type="submit" class="btn btn-outline-light me-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calculator-fill" viewBox="0 0 16 16">
+  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2 .5v2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5zm0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zM4.5 9a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM4 12.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zM7.5 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM7 9.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm.5 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM10 6.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm.5 2.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5h-1z"/>
+</svg> Calcular</button>
+            </form> 
+
+                      <!-- Script -->
+
+                      <script>
+                        //------------------------------------//
+                        //--Codigo para acceder al resultado--// 
+                        //-------Rendimiento estimado---------// 
+                        //------------------------------------//
+                        $(document).ready(function(){
+                            $("#renest").submit(function(event){
+                                event.preventDefault();
+                                var n = $("#n").val();
+                                var p = $("#p").val();
+                                var k = $("#k").val();
+                                var area = $("#area").val();
+                                var kaplicados = $("#kaplicados").val();
+                                var calculo = $("#calculo").val(); 
+                                $.ajax({
+                                    url: "modelo/calculadora.php",
+                                    type: "POST",
+                                    data: {n:n,p:p, k:k, area:area, kaplicados:kaplicados, calculo:calculo},
                                     success: function(resultados,unidades){
                                         $("#resultado").html(resultados,unidades);
                                     }
