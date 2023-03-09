@@ -21,7 +21,7 @@
 <h6 class="fw-light text-dark"><?php echo $i_ubicacion; ?> <?php echo $datos["nombre"];?></h6>
 <br>
 
-                  <form action="<?php echo basename($_SERVER['PHP_SELF']);?>" method="post">
+                  <form action="<?php echo basename($_SERVER['PHP_SELF'],".php");?>" method="post">
          <input type="hidden" name="cultivo_id" value="<?php echo $cultivo_id;?>">
         <input type="hidden" name="id_plan" value="<?php echo $datos["plan_id"];?>">
         <button type="submit" name="eliminar" class="btn btn-outline-danger me-2"><?php echo $i_basura; ?> Eliminar</button>

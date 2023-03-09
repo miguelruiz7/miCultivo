@@ -8,7 +8,7 @@
         </div>
                <div class="modal-body">
                 <div class="modal-body p-5 pt-0">
-                   <form id="formulario" action="<?php echo basename($_SERVER['PHP_SELF']);?>" method="post">
+                   <form id="formulario" action="<?php echo basename($_SERVER['PHP_SELF'],".php");?>" method="post">
                    <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-1">
                       <div class="col-md-8">

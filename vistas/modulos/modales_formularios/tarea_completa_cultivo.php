@@ -20,7 +20,7 @@
           <div class="row">
             <div class="col mb-4"><h6 class="card-text text-dark"><?php echo $datos["inicio_plan"];?> al <?php echo $datos["final_plan"];?>  </h6></div>
           </div>       
-                  <form action="<?php echo basename($_SERVER['PHP_SELF']);?>" method="post">
+                  <form action="<?php echo basename($_SERVER['PHP_SELF'],".php");?>" method="post">
         <input type="hidden" name="id_plan" value="<?php echo $datos["id_plan"];?>">
         <button type="submit" name="completado" class="btn btn-outline-danger me-2"><?php echo $i_verificado; ?> Marcar como completada</button>
           </form>

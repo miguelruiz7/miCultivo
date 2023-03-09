@@ -4,7 +4,7 @@
 <div id="notificaciones"></div>
     <div class="row py-lg-5">
       <div class="col-lg-12">
-        <h1 class="fw-light">Calculadora</h1> <a href="<?php echo basename($_SERVER['PHP_SELF'],".php"); ?>"><button class="btn btn-light"><?php echo $i_recargar; ?></button></a>
+        <h1 class="fw-light">Calculadora</h1> <a href="<?php echo basename($_SERVER['PHP_SELF']); ?>"><button class="btn btn-light"><?php echo $i_recargar; ?></button></a>
     </div>
   </section>
  

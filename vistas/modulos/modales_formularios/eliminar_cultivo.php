@@ -19,7 +19,7 @@
                 <h4 class="fw-light text-dark"><?php echo $datos["nombre"];?></h4>
                   <!-- Barra de progreso -->
             <?php include('vistas/modulos/progreso_barra_cultivo_card.php'); ?>
-                  <form action="<?php echo basename($_SERVER['PHP_SELF']);?>" method="post">
+                  <form action="<?php echo basename($_SERVER['PHP_SELF'],".php");?>" method="post">
         <input type="hidden" name="id" value="<?php echo $datos["id"];?>">
         <button type="submit" name="eliminar" class="btn btn-outline-danger me-2"><?php echo $i_basura; ?> Eliminar</button>
           </form>
