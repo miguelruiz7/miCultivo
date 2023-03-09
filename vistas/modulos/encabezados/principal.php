@@ -16,7 +16,7 @@
 <div class="container">
 <header>
 <div class="d-flex flex-column flex-shrink-0 fixed-top" style="width: 4.5rem;height: 100%;">
-    <a href="index" class="d-block p-3 link-dark text-decoration-none" title="Mi cultivo" data-bs-toggle="tooltip" data-bs-placement="right">
+    <a href="index.php" class="d-block p-3 link-dark text-decoration-none" title="Mi cultivo" data-bs-toggle="tooltip" data-bs-placement="right">
       <img src="assets/logo.png" class="bi pe-none" width="40" height="40"></img>
       <span class="visually-hidden"></span>
     </a>
@@ -26,7 +26,7 @@
       if($pagina=="index.php"){
         ?>
         <li class="nav-item">
-        <a href="index" class="nav-link py-3 rounded-0" aria-current="page" title="Inicio" data-bs-toggle="tooltip" data-bs-placement="right">
+        <a href="index.php" class="nav-link py-3 rounded-0" aria-current="page" title="Inicio" data-bs-toggle="tooltip" data-bs-placement="right">
         <?php echo $i_inicio; ?>
         </a>
       </li>
@@ -51,7 +51,7 @@
       }else if($pagina=="calculadora.php") {
       ?>
       <li class="nav-item">
-        <a href="index" class="nav-link py-3 rounded-0" aria-current="page" title="Inicio" data-bs-toggle="tooltip" data-bs-placement="right">
+        <a href="index.php" class="nav-link py-3 rounded-0" aria-current="page" title="Inicio" data-bs-toggle="tooltip" data-bs-placement="right">
         <?php echo $i_inicio; ?>
         </a>
       </li>
@@ -59,7 +59,7 @@
       }else if($pagina=="bitacora.php"){
         ?>
     <li class="nav-item">
-        <a href="index" class="nav-link py-3 rounded-0" aria-current="page" title="Inicio" data-bs-toggle="tooltip" data-bs-placement="right">
+        <a href="index.php" class="nav-link py-3 rounded-0" aria-current="page" title="Inicio" data-bs-toggle="tooltip" data-bs-placement="right">
         <?php echo $i_inicio; ?>
         </a>
       </li>
