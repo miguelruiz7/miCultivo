@@ -174,7 +174,7 @@
                       </div>
             <div class="form-floating mb-3">
                       <input type="text" name="mazorca" class="form-control rounded-3" id="mazorca" pattern="[0-9]+([\.,][0-9]+)?" required>
-                      <label for="floatingInput">Media de mazorcas</label>
+                      <label for="floatingInput">Promedio de mazorcas</label>
                       </div>
             <div class="form-floating mb-3">
                       <input type="text" name="filas" class="form-control rounded-3" id="filas" pattern="[0-9]+([\.,][0-9]+)?" required>
