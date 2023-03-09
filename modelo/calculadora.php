@@ -39,13 +39,18 @@
 				
 				case '4':
 				//Rendimiento estimado
-				// ESTE NO LO VAS A HACER PERO SI HAZ LA PLANTILLA PARA ESTE.
 					$mazorca = $_POST['mazorca'];
-					$granosmazorca = $_POST['granosmazorca'];
 					$filas = $_POST['filas'];
 					$granosfila = $_POST['granosfila'];
-					$resultados = "<h2 class='fw-light m-2 text-center'>El rendimiento estimado será de:</h2><h2 class='fw-light' id='txtresultado'>".($mazorca)."</h2>";
-					$unidades = "<h2 class='fw-light'>litros por hectárea</h2><br><!--<button onclick='guardarResultado()' class='btn btn-outline-light me-2'> Guardar resultado</button>-->";
+					$peso = $_POST['peso'];
+					$hectarea = $_POST['hectareas'];
+
+					$resulton= (($mazorca * 1000)*($filas*$granosfila))*(($peso)/(1000000));
+
+					$resultadoreal = ((($hectarea*$resulton)/1)/1000);
+
+					$resultados = "<h2 class='fw-light m-2 text-center'>El rendimiento estimado será de:</h2><h2 class='fw-light' id='txtresultado'>".round($resultadoreal,3)."</h2>";
+					$unidades = "<h2 class='fw-light'>toneladas por $hectarea hectarea(s)</h2><br><!--<button onclick='guardarResultado()' class='btn btn-outline-light me-2'> Guardar resultado</button>-->";
 					
 					break;
 

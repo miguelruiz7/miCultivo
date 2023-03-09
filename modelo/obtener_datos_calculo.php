@@ -169,12 +169,12 @@
             ?>
             <form id="renest">
             <div class="form-floating mb-3">
-                      <input type="text" name="mazorca" class="form-control rounded-3" id="mazorca" pattern="[0-9]+([\.,][0-9]+)?" required>
-                      <label for="floatingInput">Mazorcas por hectárea (Promedio)</label>
+                      <input type="text" name="hectareas" class="form-control rounded-3" id="hectareas" pattern="[0-9]+([\.,][0-9]+)?" required>
+                      <label for="floatingInput">Area total del cultivo</label>
                       </div>
             <div class="form-floating mb-3">
-                      <input type="text" name="granosmazorca" class="form-control rounded-3" id="granosmazorca" pattern="[0-9]+([\.,][0-9]+)?" required>
-                      <label for="floatingInput">Numero de granos por mazorca (Promedio)</label>
+                      <input type="text" name="mazorca" class="form-control rounded-3" id="mazorca" pattern="[0-9]+([\.,][0-9]+)?" required>
+                      <label for="floatingInput">Media de mazorcas</label>
                       </div>
             <div class="form-floating mb-3">
                       <input type="text" name="filas" class="form-control rounded-3" id="filas" pattern="[0-9]+([\.,][0-9]+)?" required>
@@ -183,15 +183,11 @@
             <div class="form-floating mb-3">
                       <input type="text" name="granosfila" class="form-control rounded-3" id="granosfila" pattern="[0-9]+([\.,][0-9]+)?" required>
                       <label for="floatingInput">Promedio de granos por fila (Mazorca)</label>
-                      </div>
-
+                      </div> 
             <div class="form-floating mb-3">
                       <input type="text" name="peso" class="form-control rounded-3" id="peso" pattern="[0-9]+([\.,][0-9]+)?" required>
-                      <label for="floatingInput">Peso de mil granos</label>
-                      </div>
-
-            
-
+                      <label for="floatingInput">Peso de 1000 granos</label>
+                      </div>     
                       <input type="hidden" name="calculo" class="form-control rounded-3" id="calculo" value="4"> 
 
                       <button type="submit" class="btn btn-outline-light me-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calculator-fill" viewBox="0 0 16 16">
@@ -210,14 +206,15 @@
                             $("#renest").submit(function(event){
                                 event.preventDefault();
                                 var mazorca = $("#mazorca").val();
-                                var granosmazorca = $("#granosmazorca").val();
                                 var filas = $("#filas").val();
                                 var granosfila = $("#granosfila").val();
                                 var calculo = $("#calculo").val();
+                                var peso = $("#peso").val();
+                                var hectareas = $("#hectareas").val(); 
                                 $.ajax({
                                     url: "modelo/calculadora.php",
                                     type: "POST",
-                                    data: {mazorca:mazorca, granosmazorca:granosmazorca, filas:filas, granosfila:granosfila, calculo:calculo},
+                                    data: {mazorca:mazorca,filas:filas, granosfila:granosfila, peso:peso, hectareas:hectareas, calculo:calculo},
                                     success: function(resultados,unidades){
                                         $("#resultado").html(resultados,unidades);
                                     }
