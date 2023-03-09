@@ -65,8 +65,8 @@ INSERT INTO `calculo` (`id`, `nombre`, `descripcion`, `unidades`, `tipo_id`) VAL
 (1, 'Densidad de siembra (Granos)', '', '0', 1),
 (2, 'Densidad de siembra (Forraje)', '', '0', 2),
 (3, 'Dosis agroquimicos', '', '0', 99),
-(4, 'Rendimiento aproximado', '', '0', 1);
-(5, 'Tasa de aplicación de fertilizantes', '', '0', 3);
+(4, 'Rendimiento aproximado', '', '0', 1),
+(5, 'Tasa de aplicación de fertilizantes', '', '0', 99);
 
 -- --------------------------------------------------------
 
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `cultivo` (
 --
 
 INSERT INTO `cultivo` (`id`, `nombre`, `tipo_id`, `ubicacion`, `inicio`, `final`, `descripcion`, `area`, `rendimiento`) VALUES
-(215, 'Maiz (Miguel Ruiz Zamora)', 1, 'Yolotepec, Hidalgo', '2023-02-03', '2023-03-07', 'Propiedad de la Universidad Tecnológica del Valle del Mezquital.', 2.12, 12);
+(215, 'Maiz (Miguel Ruiz Zamora)', 1, 'Yolotepec, Hidalgo', '2023-02-03', '2023-03-07', 'Propiedad de la Universidad Tecnológica del Valle del Mezquital.', 2.12, 12),
 (216, 'Avena (Miguel Ruiz Zamora)', 2, 'Yolotepec, Hidalgo', '2023-02-03', '2023-03-07', 'Propiedad de la Universidad Tecnológica del Valle del Mezquital.', 2.12, 12);
 
 
