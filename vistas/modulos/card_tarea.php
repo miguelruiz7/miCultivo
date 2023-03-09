@@ -18,7 +18,7 @@
             <div class="col mb-4"><h6 class="card-text"><?php echo $datos["periodo"];?></h6></div>
           </div>
           
-          <button type="button" class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#detalles<?php echo $datos["id_plan"]; ?>"><?php echo $i_externo; ?> Ver descripcion</button>
+          <button type="button" class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#detalles<?php echo $datos["id_plan"]; ?>"><?php echo $i_externo; ?> Ver descripción</button>
 
 <div class="container">
   <?php

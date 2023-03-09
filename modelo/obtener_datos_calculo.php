@@ -9,11 +9,11 @@
             <form id="dsiembra">
             <div class="form-floating mb-3">
                       <input type="text" name="perdida" class="form-control rounded-3" id="perdida" pattern="[0-9]+([\.,][0-9]+)?" required>
-                      <label for="floatingInput">Perdida de semillas</label>
+                      <label for="floatingInput">Pérdida de semillas (%)</label>
                       </div>
             <div class="form-floating mb-3">
                       <input type="text" name="margen" class="form-control rounded-3" id="margen" pattern="[0-9]+([\.,][0-9]+)?" required>
-                      <label for="floatingInput">Margen de seguridad</label>
+                      <label for="floatingInput">Márgen de seguridad (%)</label>
                       </div>
              <div class="form-floating mb-3">
                       <input type="text" name="densidad" class="form-control rounded-3" id="densidad" pattern="[0-9]+([\.,][0-9]+)?" required>
@@ -170,7 +170,7 @@
             <form id="renest">
             <div class="form-floating mb-3">
                       <input type="text" name="hectareas" class="form-control rounded-3" id="hectareas" pattern="[0-9]+([\.,][0-9]+)?" required>
-                      <label for="floatingInput">Area total del cultivo</label>
+                      <label for="floatingInput">Área total del cultivo (Hectareas)</label>
                       </div>
             <div class="form-floating mb-3">
                       <input type="text" name="mazorca" class="form-control rounded-3" id="mazorca" pattern="[0-9]+([\.,][0-9]+)?" required>
@@ -186,7 +186,7 @@
                       </div> 
             <div class="form-floating mb-3">
                       <input type="text" name="peso" class="form-control rounded-3" id="peso" pattern="[0-9]+([\.,][0-9]+)?" required>
-                      <label for="floatingInput">Peso de 1000 granos</label>
+                      <label for="floatingInput">Peso de 1000 granos (Gramos)</label>
                       </div>     
                       <input type="hidden" name="calculo" class="form-control rounded-3" id="calculo" value="4"> 
 
@@ -200,7 +200,7 @@
                       <script>
                         //------------------------------------//
                         //--Codigo para acceder al resultado--// 
-                        //-------Rendimiento estimado---------// 
+                        //-Tasa de aplicación de fertilizante-// 
                         //------------------------------------//
                         $(document).ready(function(){
                             $("#renest").submit(function(event){
@@ -238,7 +238,7 @@
                       </div>
             <div class="form-floating mb-3">
                       <input type="text" name="p" class="form-control rounded-3" id="p" pattern="[0-9]+([\.,][0-9]+)?" >
-                      <label for="floatingInput">Fosforo (P)</label>
+                      <label for="floatingInput">Fósforo (P)</label>
                       </div>
             <div class="form-floating mb-3">
                       <input type="text" name="k" class="form-control rounded-3" id="k" pattern="[0-9]+([\.,][0-9]+)?" >
@@ -251,7 +251,7 @@
                       </div> 
             <div class="form-floating mb-3">
                       <input type="text" name="area" class="form-control rounded-3" id="area" pattern="[0-9]+([\.,][0-9]+)?" required>
-                      <label for="floatingInput">Area del cultivo</label>
+                      <label for="floatingInput">Área del cultivo</label>
                       </div>     
                       <input type="hidden" name="calculo" class="form-control rounded-3" id="calculo" value="5"> 
 
