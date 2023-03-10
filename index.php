@@ -51,6 +51,12 @@ if(isset($_POST['agregar'])){
     </div>";
     }
 
+    if($inicio==$final){
+      $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+      El cultivo no tiene un ciclo de un día. Por lo cual debe especificar una fecha válida
+    </div>";
+    }
+
     if($errores == ''){
       //Cuando la condicion se cumpla, se realiza la inserción de los datos en la tabla cultivo a través del mysqli_query
     $sql="INSERT INTO cultivo (nombre,tipo_id,ubicacion,inicio,final,descripcion,area,rendimiento) VALUES ('$nombre','$tipo','$ubicacion','$inicio','$final','$descripcion','$area','$rendimientoi')";
@@ -87,9 +93,23 @@ if(isset($_POST['actualizar'])){
     if($id == '' || $nombre == '' || $tipo == '' || $ubicacion == '' || $inicio == '' || $final == '' || $descripcion == '' || $rendimientoi == ''){
         $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
         Ingrese todos los datos correctamente.
-
       </div>";
-    }else{
+    }
+
+      if($inicio>$final){
+        $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        Introduce una fecha que no sea mayor a la final.
+      </div>";
+      }
+
+      if(new DateTime($inicio)==new DateTime($final)){
+        $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        El cultivo no tiene un ciclo de un día. Por lo cual debe especificar una fecha válida
+      </div>";
+      }
+    }
+
+    if($errores == ''){
     //Se realiza la actualización de los datos en la tabla cultivo a través del mysqli_query
     $sql="UPDATE cultivo SET nombre='$nombre',tipo_id='$tipo',ubicacion='$ubicacion',inicio='$inicio',final='$final',descripcion='$descripcion',area='$area',rendimiento='$rendimientoi' WHERE id = '$id'";
     if (mysqli_query($conexion,$sql))
@@ -108,7 +128,6 @@ if(isset($_POST['actualizar'])){
     }
 }
   }
-}
 //ELIMINAR CULTIVO
 if(isset($_POST['eliminar'])){
     if($_SERVER['REQUEST_METHOD']=='POST'){ 

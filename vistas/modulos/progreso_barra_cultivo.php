@@ -17,7 +17,7 @@
           ?>
            
           <div class="row">
-            <div class="col mb-4"><h6 class="card-text"><?php if($valorbarra>100){echo "Progreso: 100% completado";}else{echo "Progreso: ".round($valorbarra)."%";}?></h6><div class="progress" title="<?php if($valorbarra>100){echo "Progreso: 100% completado";}else{echo "Progreso: ".round($valorbarra)."% (".$dc." días de ".$dt." días)";}?>" style="height: 5px;">
+            <div class="col mb-4"><h6 class="card-text"><?php if($valorbarra>100){echo "Progreso: 100% completado";}else{echo "Progreso: ".round($valorbarra)."%";} ?></h6><div class="progress" title="<?php if($valorbarra>100){echo "Progreso: 100% completado";}else{echo "Progreso: ".round($valorbarra)."% (".$dc." días de ".$dt." días)";}?>" style="height: 5px;">
   <div class="progress-bar bg-warning " role="progressbar" style="width: <?php echo round($valorbarra);?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div>
           </div>
