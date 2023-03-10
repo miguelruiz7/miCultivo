@@ -152,6 +152,7 @@ if(isset($_POST['agregarplan'])){
   $presupuesto=$_POST['txtpto'];
   $materiales=$_POST['txtmat'];
 
+  
 
   if($nombre == '' || $inicio == '' || $final == '' || $inicio == '' || $final == '' || $descripcion == '' || $humanos == '' || $presupuesto == '' || $materiales == ''){
       $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
@@ -167,6 +168,34 @@ if(isset($_POST['agregarplan'])){
     $nombre, ya se encuentra activo en el plan.
   </div>";
    }
+
+     //Se realiza la consulta en la tabla cultivo a través del mysqli_query
+     $fechas=mysqli_query($conexion,"SELECT * FROM cultivo WHERE id= '$id_cultivo'");
+     if (mysqli_num_rows($fechas)>0)
+     {
+      $periodos = mysqli_fetch_array($fechas);
+      $forminicio = new DateTime($inicio);
+      $formfinal = new DateTime($final);
+      $finicio = new DateTime($periodos['inicio']);
+      $ffinal = new DateTime($periodos['final']);
+      
+      // Verificar que la fecha de inicio de la tarea esté dentro del semestre
+            if ($forminicio >= $finicio && $forminicio <= $ffinal) {
+              // Verificar que la fecha de fin de la tarea esté dentro del semestre
+              if ($formfinal >= $finicio && $formfinal <= $ffinal) {
+                // La tarea está dentro del período semestral, hacer lo que sea necesario
+                // ...
+              } else {
+                $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                La fecha de finalización de la actividad está fuera del periodo del cultivo.
+                </div>";
+              }
+              } else {
+                $errores .="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                  La fecha de inicio de la actividad está fuera del periodo del cultivo.
+                </div>";
+              }
+     }
   
   
   
