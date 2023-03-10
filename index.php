@@ -45,6 +45,7 @@ if(isset($_POST['agregar'])){
       </div>";
     }
 
+    //En estas dos condiciones valida si la fecha de inicio es mayor a la final ó si la fecha de inicio es igual a la finalización
     if($inicio>$final){
       $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
       Introduce una fecha que no sea mayor a la final.
@@ -57,6 +58,7 @@ if(isset($_POST['agregar'])){
     </div>";
     }
 
+    //Si no hay ningún error se procede a ejecutar las sentencias SQL
     if($errores == ''){
       //Cuando la condicion se cumpla, se realiza la inserción de los datos en la tabla cultivo a través del mysqli_query
     $sql="INSERT INTO cultivo (nombre,tipo_id,ubicacion,inicio,final,descripcion,area,rendimiento) VALUES ('$nombre','$tipo','$ubicacion','$inicio','$final','$descripcion','$area','$rendimientoi')";
@@ -90,12 +92,14 @@ if(isset($_POST['actualizar'])){
     $area=$_POST['txtarea'];
     $rendimientoi=$_POST['txtreni'];
 
+    //Verifica que no haya campos vacios
     if($id == '' || $nombre == '' || $tipo == '' || $ubicacion == '' || $inicio == '' || $final == '' || $descripcion == '' || $rendimientoi == ''){
         $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
         Ingrese todos los datos correctamente.
       </div>";
     }
 
+     //En estas dos condiciones valida si la fecha de inicio es mayor a la final ó si la fecha de inicio es igual a la finalización
       if($inicio>$final){
         $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
         Introduce una fecha que no sea mayor a la final.
@@ -108,7 +112,8 @@ if(isset($_POST['actualizar'])){
       </div>";
       }
     }
-
+   
+    //Si no hay ningún error se procede a ejecutar las sentencias SQL
     if($errores == ''){
     //Se realiza la actualización de los datos en la tabla cultivo a través del mysqli_query
     $sql="UPDATE cultivo SET nombre='$nombre',tipo_id='$tipo',ubicacion='$ubicacion',inicio='$inicio',final='$final',descripcion='$descripcion',area='$area',rendimiento='$rendimientoi' WHERE id = '$id'";
@@ -172,7 +177,7 @@ if(isset($_POST['agregarplan'])){
   $materiales=$_POST['txtmat'];
 
   
-
+ //Verifica que no haya campos vacios
   if($nombre == '' || $inicio == '' || $final == '' || $inicio == '' || $final == '' || $descripcion == '' || $humanos == '' || $presupuesto == '' || $materiales == ''){
       $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
       Rellene todos los datos correctamente.
@@ -192,7 +197,9 @@ if(isset($_POST['agregarplan'])){
      $fechas=mysqli_query($conexion,"SELECT * FROM cultivo WHERE id= '$id_cultivo'");
      if (mysqli_num_rows($fechas)>0)
      {
+      //Obtendra los periodos del cultivo a traves e mysqli_fetch_array
       $periodos = mysqli_fetch_array($fechas);
+      //Convierte las fechas en objectos
       $forminicio = new DateTime($inicio);
       $formfinal = new DateTime($final);
       $finicio = new DateTime($periodos['inicio']);
@@ -217,7 +224,7 @@ if(isset($_POST['agregarplan'])){
      }
   
   
-  
+     //Si no hay ningún error se procede a ejecutar las sentencias SQL
   if($errores == ''){
   
     //Se realiza la inserción en la tabla plan a través del mysqli_query
@@ -243,12 +250,13 @@ if(isset($_POST['completado'])){
   if($_SERVER['REQUEST_METHOD']=='POST'){ 
      // Se almacenan los valores obtenidos por el formulario en las siguientes variables.
   $id=$_POST['id_plan'];
+  //Verifica que no este vacio el campo
   if($id == ''){
       $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
       Rellene los datos correctamente.
     </div>";
   }else{
-    
+       //Si el campo no está vacio se procede a ejecutar las sentencias SQL
     //Se realiza la actualización en la tabla plan a través del mysqli_query
     $sql="UPDATE plan SET completado=1 WHERE id_plan='$id'";
     if (mysqli_query($conexion,$sql))
@@ -275,13 +283,13 @@ if(isset($_POST['agregarbit'])){
   $lugar=$_POST['txtlugar'];
   $descripcion=ucfirst($_POST['txtdescripcion']);
   $marcacompleta = $_POST['completar'];
-
+ //Verifica que no esten los campos vacios
   if($plan == '' || $lugar == '' || $descripcion == ''){
       $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
       Rellene todos los datos correctamente.
     </div>";
   }else{
-    
+       //Si no hay ningún error se procede a ejecutar las sentencias SQL
     //Se realiza la inserción en la tabla bitácora a través del mysqli_query
   $sql="INSERT INTO bitacora (id_bitacora,plan_id,fecha,lugar,desarollo) VALUES (NULL,'$plan',now(),'$lugar','$descripcion')";
   if (mysqli_query($conexion,$sql))

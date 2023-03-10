@@ -27,14 +27,14 @@ if(isset($_POST['eliminar'])){
       // Se almacenan los valores obtenidos por el formulario en las siguientes variables.
     $id=$_POST['id_plan'];
     $cultivo_id = $_POST['cultivo_id'];
+    //Verifica que el campo no este vacio
     if($id == ''){
     }else{
-          
+    //Si no hay ningún error se procede a ejecutar las sentencias SQL
     //Se realiza la eliminacion en en la tabla bitácora a través del mysqli_query
     $sqldel="DELETE FROM bitacora WHERE plan_id='$id'";
     if (mysqli_query($conexion,$sqldel))
     {
-          
     //Se realiza la eliminacion en la tabla plan a través del mysqli_query
       $sqlupdt="UPDATE plan SET completado=0 WHERE id_plan='$id'";
       if (mysqli_query($conexion,$sqlupdt))

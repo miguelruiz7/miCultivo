@@ -34,7 +34,6 @@
                       <!-- Script -->
 
                       <script>
-                        //Cada que seleccionan una opción
                         //------------------------------------//
                         //--Codigo para acceder al resultado--// 
                         //----Densidad de siembra granos------// 
@@ -199,9 +198,9 @@
                       <!-- Script -->
 
                       <script>
-                        //------------------------------------//
+                         //------------------------------------//
                         //--Codigo para acceder al resultado--// 
-                        //-Tasa de aplicación de fertilizante-// 
+                        //-------Rendimiento estimado---------// 
                         //------------------------------------//
                         $(document).ready(function(){
                             $("#renest").submit(function(event){
@@ -264,9 +263,9 @@
                       <!-- Script -->
 
                       <script>
-                        //------------------------------------//
+                         //------------------------------------//
                         //--Codigo para acceder al resultado--// 
-                        //-------Rendimiento estimado---------// 
+                        //-Tasa de aplicación de fertilizante-// 
                         //------------------------------------//
                         $(document).ready(function(){
                             $("#renest").submit(function(event){
