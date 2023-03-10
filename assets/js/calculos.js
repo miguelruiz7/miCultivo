@@ -7,6 +7,7 @@ $(document).ready(function(){
             data: {cultivo_id: cultivo_id},
             success: function(data){
                 $("#tipos").html(data);
+                $("#resultado").html("");
             }
         });
     });
