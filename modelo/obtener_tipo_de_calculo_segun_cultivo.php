@@ -36,6 +36,7 @@
  <script>
     $(document).ready(function(){
     $("#tipodato").change(function(){
+        const resultados = document.querySelector('#resultado');
         var tipo_id = $(this).val();
         $.ajax({
             url: "modelo/obtener_datos_calculo.php",
@@ -43,6 +44,7 @@
             data: {tipo_id: tipo_id},
             success: function(data){
                 $("#muestra").html(data);
+                $("#resultado").html("");
             }
         });
 

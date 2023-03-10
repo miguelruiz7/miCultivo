@@ -35,7 +35,6 @@
 
                       <script>
                         //Cada que seleccionan una opción
-                         $("#resultado").html("");
                         //------------------------------------//
                         //--Codigo para acceder al resultado--// 
                         //----Densidad de siembra granos------// 
