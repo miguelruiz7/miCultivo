@@ -1,4 +1,5 @@
 <?php
+include('controlador/admin_session.php');
 //Incluimos dependencias
 include('modelo/bases.php');
 //Cargamos nuestras vistas

@@ -69,17 +69,21 @@
       }
       ?>
     </ul>
-    <!-- <div class="dropdown">
+    <div class="dropdown">
       <a href="#" class="d-flex align-items-center justify-content-center p-3 link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle">
+        <!-- <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle"> -->
+        <div class="rounded-circle bg-success d-flex justify-content-center align-items-center" style="width: 40px;">
+  <span style="color: white; font-size: px;"><?php include('modelo/usuario.php'); echo substr($usuario,0,1);?> </span>
+</div>
       </a>
       <ul class="dropdown-menu text-small shadow">
-        <li><a class="dropdown-item" href="#">Ajustes</a></li>
-        <li><a class="dropdown-item" href="#">Perfil</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+        <!-- <li><a class="dropdown-item" href="#">Ajustes</a></li> -->
+       <!-- <li><a class="dropdown-item" href="#">Perfil</a></li> -->
+       <li><p class="dropdown-title p-3 text-center"><?php include('modelo/usuario.php'); echo $usuario;?></p></li> 
+        <li><hr class="dropdown-divider"></li> 
+        <li><a class="dropdown-item" href="logout">Cerrar sesión</a></li>
       </ul>
-    </div> -->
+    </div>
   </div>
 </header>
 </div>

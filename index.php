@@ -1,7 +1,7 @@
 <?php
 //Se incluye la conexión
 include('controlador/conexion.php');
-
+include('controlador/admin_session.php');
 
 /*
 // Extracción del archivo: controlador/conexion.php
