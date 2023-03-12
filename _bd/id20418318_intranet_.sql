@@ -21,9 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `id20418318_intranet_`
 --
-DROP DATABASE IF EXISTS sistemas_;
-CREATE DATABASE sistemas_;
-USE sistemas_;
+
 -- --------------------------------------------------------
 
 --

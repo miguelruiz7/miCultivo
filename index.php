@@ -145,6 +145,7 @@ if(isset($_POST['eliminar'])){
       </div>";
     }else{
         //Se realiza la eliminación de los datos en la tabla cultivo, plan a través del mysqli_multi_query
+        
         $sqldel="DELETE FROM plan WHERE cultivo_id='$id';";
         $sqldel.="DELETE FROM cultivo WHERE id='$id'";
           if (mysqli_multi_query($conexion,$sqldel))
