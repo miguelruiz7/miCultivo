@@ -7,7 +7,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
                <div class="modal-body">
-                <div class="modal-body p-5 pt-0">
+                <div class="modal-body p-1 pt-0">
                    <form action="<?php echo basename($_SERVER['PHP_SELF'],".php");?>" method="post">
                    <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-1">

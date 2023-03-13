@@ -47,8 +47,6 @@ CREATE TABLE `bitacora` (
 CREATE TABLE `calculo` (
   `id` int(11) NOT NULL,
   `nombre` varchar(90) NOT NULL,
-  `descripcion` varchar(255) NOT NULL,
-  `unidades` varchar(300) NOT NULL,
   `tipo_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
