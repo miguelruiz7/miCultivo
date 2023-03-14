@@ -52,6 +52,7 @@
                                     data: { perdida: perdida, margen: margen, densidad: densidad, distancia:distancia, calculo:calculo},
                                     success: function(resultados,unidades){
                                         $("#resultado").html(resultados,unidades);
+                                        document.getElementById("resultado").scrollIntoView({ behavior: "smooth" });
                                     }
                                 });
                             });
@@ -101,6 +102,7 @@
                                     data: {epoca:epoca, calculo:calculo},
                                     success: function(resultados,unidades){
                                         $("#resultado").html(resultados,unidades);
+                                         document.getElementById("resultado").scrollIntoView({ behavior: "smooth" });
                                     }
                                 });
                             });
@@ -154,6 +156,7 @@
                                     data: {consumo:consumo, producto:producto, concentracion:concentracion, calculo:calculo},
                                     success: function(resultados,unidades){
                                         $("#resultado").html(resultados,unidades);
+                                         document.getElementById("resultado").scrollIntoView({ behavior: "smooth" });
                                     }
                                 });
                             });
@@ -217,6 +220,7 @@
                                     data: {mazorca:mazorca,filas:filas, granosfila:granosfila, peso:peso, hectareas:hectareas, calculo:calculo},
                                     success: function(resultados,unidades){
                                         $("#resultado").html(resultados,unidades);
+                                         document.getElementById("resultado").scrollIntoView({ behavior: "smooth" });
                                     }
                                 });
                             });
@@ -282,6 +286,7 @@
                                     data: {n:n,p:p, k:k, area:area, kaplicados:kaplicados, calculo:calculo},
                                     success: function(resultados,unidades){
                                         $("#resultado").html(resultados,unidades);
+                                         document.getElementById("resultado").scrollIntoView({ behavior: "smooth" });
                                     }
                                 });
                             });
