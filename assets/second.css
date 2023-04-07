@@ -1,0 +1,35 @@
+body {
+    background-color: #37ad4f;
+}
+
+.nav-link.py-3.rounded-0 {
+    color: #fff;
+}
+
+.nav-link.py-3.rounded-0:hover {
+    color: #fd7e14;
+}
+
+.fw-light {
+    color: #fff;
+}
+.card{
+    background-color:  #166e12;
+    border-radius: 20px;
+    border:none;
+} 
+h6.card-text{
+     color: #fff;
+}
+.card{
+    background-color:  #166e12;
+    border-radius: 20px;
+    border:none;
+} 
+h6.card-text{
+     color: #fff;
+}
+
+#ultimo + div {
+    visibility:hidden;
+}
