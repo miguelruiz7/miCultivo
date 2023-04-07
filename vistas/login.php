@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
     <meta name="description" content="">
+        <link rel="shortcut icon" href="assets/logo.png" type="image/png">
     <title>Mi cultivo | Inicio de sesion</title>
 <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">  
     <!-- Custom styles for this template -->

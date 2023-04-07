@@ -8,7 +8,7 @@ $cultivo_id = $_POST['plan_id'];
         $conecta -> miCultivo();
         $conexion = $conecta ->conexionmiCultivo;
     // Consulta a la base de datos para obtener los planes de la marca seleccionada
-    $query = "SELECT * FROM plan WHERE cultivo_id = $cultivo_id AND completado = 0";
+    $query = "SELECT * FROM plan WHERE inicio_plan <= DATE_ADD(NOW(), INTERVAL 4 DAY) AND DATEDIFF(NOW(), inicio_plan) <= 5 AND  cultivo_id = $cultivo_id AND completado = 0";
     $result = mysqli_query($conexion, $query);
 
     while($row = mysqli_fetch_assoc($result)) {

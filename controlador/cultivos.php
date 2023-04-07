@@ -46,7 +46,13 @@ function mostrarinfocultivo($sesion){
         $conecta -> miCultivo();
         $conexion = $conecta ->conexionmiCultivo;
     
-        $consulta = mysqli_query($conexion, "SELECT id_plan, nombre, nombre_plan, inicio_plan, final_plan, descripcion, descripcion_p, recurso_hum, recurso_econ, recurso_mat, CONCAT('Del ',DATE_FORMAT(inicio_plan, '%d/%m/%Y'),' al ',DATE_FORMAT(final_plan, '%d/%m/%Y'),'.') as periodo FROM plan, cultivo WHERE inicio_plan <= DATE_ADD(NOW(), INTERVAL 4 DAY) AND plan.completado = 0 AND plan.cultivo_id = cultivo.id AND cultivo.usuario_id='$sesion'");
+        $consulta = mysqli_query($conexion, "SELECT id_plan, nombre, nombre_plan, inicio_plan, final_plan, descripcion, descripcion_p, recurso_hum, recurso_econ, recurso_mat, CONCAT('Del ',DATE_FORMAT(inicio_plan, '%d/%m/%Y'),' al ',DATE_FORMAT(final_plan, '%d/%m/%Y'),'.') as periodo 
+        FROM plan, cultivo 
+        WHERE inicio_plan <= DATE_ADD(NOW(), INTERVAL 4 DAY) 
+          AND DATEDIFF(NOW(), inicio_plan) <= 5 
+          AND plan.completado = 0 
+          AND plan.cultivo_id = cultivo.id 
+          AND cultivo.usuario_id='$sesion'");
         if (mysqli_num_rows($consulta)>0)
         {
             $cultivos = "";
