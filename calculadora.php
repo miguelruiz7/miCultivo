@@ -6,8 +6,6 @@ sesion();
 include('vistas/iconos.php');
 //Incluimos los controladores
 include('controlador/cultivos.php');
-
-
 //Vistas
 include('vistas/calculadora.php');
 

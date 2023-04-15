@@ -66,19 +66,12 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $insertar = mysqli_query($conexion, "INSERT INTO usuarios (nombre, usuario, correo, contrasena, rol) VALUES ('$nombre', '$usuario', '$correo_main','".password_hash($contrasena, PASSWORD_DEFAULT)."','$rol')");
     if($insertar){
         session_start();
-      /*$errores .= "<div class='alert alert-success fade show' role='alert'><center>
-      Bienvenido $nombre ($usuario) Sí deseas iniciar sesión dale click <a href='login'>aquí</a>. $alerta</center>
-    </div>"; */
     $_SESSION['usuario']=$usuario;
     header('location:index.php');
    
     }
   }
-
 }
-
-
-
 // Llamamos nuestras vistas
 require('vistas/registro.php');
 

@@ -78,7 +78,7 @@ function mostrarinfocultivo($sesion){
         {
             $cultivos = "";
             while ($datos = mysqli_fetch_array($consulta)) {
-                $cultivos .= "<option value='".$datos['id']."'>".$datos['nombre']."</option>"; 
+                $cultivos .= "<option value='".$datos['id']."'>".$datos['nombre']." (".$datos['nombre'].")</option>"; 
             }
             return $cultivos;
     

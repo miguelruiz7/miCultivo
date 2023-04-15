@@ -14,7 +14,7 @@
         {
              echo "<option value=''>Selecciona:</option>"; 
             while ($datos = mysqli_fetch_array($consulta)) {
-                echo "<option value='".$datos['id']."'>".$datos['nombre']."</option>"; 
+                echo "<option value='".$datos['id']."'>".$datos['nombre']." (".$datos['inicio']." al ".$datos['final'].")</option>"; 
             }
     
         }else{
