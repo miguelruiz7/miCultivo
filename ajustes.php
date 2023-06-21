@@ -144,6 +144,7 @@ if(empty($password)){
 
 
 //Valida si la contraseña coincide en la base de datos descifrada.
+if($password != ''){
 $usr=mysqli_query($conexion,"SELECT contrasena FROM usuarios WHERE usuario = '$user_id'");
 if (mysqli_num_rows($usr)>0)
 {
@@ -154,7 +155,7 @@ if (mysqli_num_rows($usr)>0)
       $errores .="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
       Contraseña incorrecta.
     </div>";
-}
+}}
 
 
 if($errores == ''){

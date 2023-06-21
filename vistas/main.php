@@ -65,6 +65,8 @@
         <li><hr class="dropdown-divider"></li> 
          <li><a class="dropdown-item" href="#" onclick="ajustes()">Ajustes</a></li>
         <li><a class="dropdown-item" href="#" onclick="cerrar()">Cerrar sesión</a></li>
+       <!--  <li><hr class="dropdown-divider"></li> 
+            <li><p class="dropdown-title p-3 text-center"><?php echo date('Y'); ?> Mi cultivo | v1.0.0</p></li> -->
       </ul>
     </div>
   </div>

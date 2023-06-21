@@ -16,25 +16,25 @@
 <main class="form-signin w-100 m-auto">
 <header id="notificaciones" class="d-flex flex-wrap justify-content-center py-3 mb-4 border-0">
 </header>
-  <form>
+  <form id="login">
     <?php include('vistas/iconos.php'); ?>
   <!-- <h1 class="display-6 fw-light text-light">Inicio de sesión.</h1>-->
      <img class="bd-placeholder-img " src="assets/logo.png" width="80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
    <br></br>
    <?php error_reporting(0); ?>
     <div class="form-floating">
-      <input type="text" name="usuario" id="usuario" class="form-control <?php echo $clasesusr; ?>" id="floatingInput" placeholder="Text"  pattern="[A-Za-z0-9]+" required>
+      <input type="text" name="usuario" id="usuario" autocomplete="off" class="form-control <?php echo $clasesusr; ?>" id="floatingInput" placeholder="Text"  pattern="[A-Za-z0-9]+" required>
       <label class="h6 fw-light" for="floatingInput"><?php echo $correo; ?> Usuario</label>
     </div>
     <br>
     <div class="form-floating">
-      <input type="password" name="contrasena" id="contrasena" class="form-control <?php echo $clasespwd; ?>" id="floatingInput" placeholder="Password"   required>
+      <input type="password" name="contrasena" id="contrasena" autocomplete="off" class="form-control <?php echo $clasespwd; ?>" id="floatingInput" placeholder="Password"   required>
       <label class="h6 fw-light" for="floatingInput"><?php echo $llave; ?> Contraseña</label>
     </div>
      <br>
     <button class="w-100 btn btn-lg btn-success fw-light" type="button" onclick="iniciar()"><?php echo $entrar; ?> Iniciar sesión</button>        
-   <!-- <a class="nav-link active" aria-current="page" href="registro"><p class="mt-5 mb-3 text-light">¿No estás registrado? Regístrate</p></a> -->
-    <p class="mt-5 mb-3 text-light">&copy; <?php echo date('Y'); ?> Universidad Tecnológica del Valle del Mezquital | v6(js)</p>
+   <a class="nav-link active" aria-current="page" href="registro"><p class="mt-5 mb-3 text-light">¿No estás registrado? Regístrate</p></a>
+    <p class="mt-5 mb-3 text-light">&copy; <?php echo date('Y'); ?> Mi cultivo | v1.0.0-estable</p>
   </form>
 </main>
 <script src="controlador/validar.js"></script>

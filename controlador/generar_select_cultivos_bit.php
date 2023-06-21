@@ -10,7 +10,7 @@
         $conecta -> miCultivo();
         $conexion = $conecta ->conexionmiCultivo;
     
-        $consulta = mysqli_query($conexion, "SELECT * FROM cultivo");
+        $consulta = mysqli_query($conexion, "SELECT * FROM cultivo WHERE usuario_id='$sesion'");
         if (mysqli_num_rows($consulta)>0)
         {
              echo "<option value=''>Selecciona:</option>"; 

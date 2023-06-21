@@ -12,74 +12,80 @@ $conexion = $conecta ->conexionmiCultivo;
 
 
 $errores = '';
+$clasesusr = '';
+$clasespwd = '';
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-  //Escape de caracteres para prevenir inyecciones SQL con mysqli_real_escape_string
-  mysqli_real_escape_string($conexion, $usuario = $_POST['usuario']);
-  mysqli_real_escape_string($conexion, $password = $_POST['contrasena']);
+    //Escape de caracteres para prevenir inyecciones SQL con mysqli_real_escape_string
+    mysqli_real_escape_string($conexion, $usuario = $_POST['usuario']);
+    mysqli_real_escape_string($conexion, $password = $_POST['contrasena']);
 
-  //Valida que los campos no esten vacios
-  if(empty($usuario) || empty($password)){
-      $errores .= "<div class='alert alert-dismissible bg-dark text-light fade show' role='alert'><center>
-      Datos vacios. $alerta</center>
-    </div>";
-  }
+            //Valida que los campos no esten vacios
+            if(empty($usuario) || empty($password)){
+                $errores .= "<div class='alert alert-dismissible bg-dark text-light fade show' role='alert'><center>
+                Datos vacios. $alerta</center>
+              </div>";
+            }
 
-  if($errores==''){
-    //Consulta si el usuario existe
-    $usr=mysqli_query($conexion,"SELECT usuario FROM usuarios WHERE usuario = '$usuario';");
+            if($errores==''){
+                    $usr=mysqli_query($conexion,"SELECT usuario FROM usuarios WHERE usuario = '$usuario';");
+                    if (mysqli_num_rows($usr)==0)
+                    {
+                        $errores .= "<div class='alert alert-dismissible bg-dark text-light fade show' role='alert'><center>
+                        Usuario inexistente, contacta con tu administrador de sistemas. $alerta</center>
+                      </div>";
+                    $errores.= "<script>document.getElementById('login').reset();</script>";
+                    $errores.= "<script>document.getElementById('usuario').classList.remove('is-valid');</script>";
+                    $errores.= "<script>document.getElementById('contrasena').classList.remove('is-invalid');</script>";
+                    $errores.= "<script>document.getElementById('contrasena').classList.remove('is-valid');</script>";
+                    }else{
+                    $clasesusr .= "<script>document.getElementById('usuario').classList.add('is-valid');</script>";
+                    }
+                    
+                    //Valida si la contraseña coincide en la base de datos descifrada.
+                    $usr=mysqli_query($conexion,"SELECT contrasena FROM usuarios WHERE usuario = '$usuario';");
+                    if (mysqli_num_rows($usr)>0)
+                    {
+                        $columnas = mysqli_fetch_array($usr);
+                        $hash= $columnas['contrasena'];
+                        if(password_verify($password, $hash) != 1){
+                            $clasespwd .= "<script>document.getElementById('contrasena').classList.add('is-invalid');</script>";
+                            $errores .= "<div class='alert alert-dismissible bg-dark text-light fade show' role='alert'><center>
+                            Contraseña incorrecta. $alerta</center>
+                          </div>";
+                          
+                        }else{
+                                $clasespwd .= "<script>document.getElementById('contrasena').classList.remove('is-invalid');</script>";
+                                $clasespwd .= "<script>document.getElementById('contrasena').classList.add('is-valid');</script>";
+                            $selusr=mysqli_query($conexion,"SELECT usuario, nombre FROM usuarios WHERE (usuario = '$usuario' or correo = '$usuario');");
+                            if(mysqli_num_rows($selusr)>0){
+                                    $selusuario = mysqli_fetch_array($selusr);
+                                    $usuario = $selusuario['usuario'];
+                                    $nombre = $selusuario['nombre'];
+                            }
+                            $_SESSION['usuario'] = $usuario;
 
-    if (mysqli_num_rows($usr)==0)
-    {
-    $errores .= "<div class='alert alert-dismissible bg-dark text-light fade show' role='alert'><center>
-    Usuario inexistente, contacta con tu administrador de sistemas. $alerta</center>
-    </div>";
-    }
+                            $errores .= "<div class='alert alert-dismissible bg-dark text-light fade show' role='alert'><center>
+                            Bienvenido, $nombre. $alerta</center>
+                          </div>";
 
-    //Valida si la contraseña coincide en la base de datos descifrada.
-    $usr=mysqli_query($conexion,"SELECT contrasena FROM usuarios WHERE usuario = '$usuario';");
-    if (mysqli_num_rows($usr)>0)
-    {
-      $columnas = mysqli_fetch_array($usr);
-      $hash= $columnas['contrasena'];
+                            $errores.="<script type='text/javascript'>
+                            var n = 2;
+                            window.setInterval(function(){
+                                n--;
+                                // Si se cumple la condición te redirige a la página de inicio
+                                if(n == 0){
+                                location.href = 'index.php';
+                            }
+                            },1000);
+                        </script>";
+                        }
 
-      //Valida las contraseñas de la base de datos con la qué escribió el usuario
-      if(password_verify($password, $hash) != 1){
-        $clasespwd .= "is-invalid";
-        $errores .= "<div class='alert alert-dismissible bg-dark text-light fade show' role='alert'><center>
-        Contraseña incorrecta. $alerta</center>
-        </div>";
-      }else{
-        //Query para realizar la consulta del nombre completo y usuario
-        $selusr=mysqli_query($conexion,"SELECT usuario, nombre FROM usuarios WHERE (usuario = '$usuario' or correo = '$usuario');");
-        if(mysqli_num_rows($selusr)>0){
-          $selusuario = mysqli_fetch_array($selusr);
-          $usuario = $selusuario['usuario'];
-          $nombre = $selusuario['nombre'];
-        }
+                    }
+            }
 
-        //Crea la sesión usuario.
-        $_SESSION['usuario'] = $usuario;
-
-        //Muestra el mensaje de bienvenida y nos redirige al login.
-        $errores .= "<div class='alert alert-dismissible bg-dark text-light fade show' role='alert'><center>
-        Bienvenido, $nombre. $alerta</center>
-        </div>";
-
-        $errores.="<script type='text/javascript'>
-        var n = 2;
-        window.setInterval(function(){
-        n--;
-        // Si se cumple la condición te redirige a la página de inicio
-        if(n == 0){
-        location.href = 'index.php';
-        }
-        },1000);
-        </script>";
-      }
-
-    }
-  }
 }
   echo $errores;
+   echo $clasesusr;
+     echo $clasespwd;
 ?>
